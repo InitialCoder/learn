@@ -1,4 +1,4 @@
-package com.ascend.xssdemo.mvc.model;
+package com.ascend.demo.mvc.model;
 
 public class ResultInfo {
 

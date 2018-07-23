@@ -1,4 +1,4 @@
-package com.ascend.xssdemo.util;
+package com.ascend.demo.util;
 
 /**
  * 对象工具类

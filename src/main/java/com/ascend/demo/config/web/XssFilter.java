@@ -1,4 +1,4 @@
-package com.ascend.xssdemo.config.web;
+package com.ascend.demo.config.web;
 
 
 import java.io.IOException;

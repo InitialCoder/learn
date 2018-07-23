@@ -1,4 +1,4 @@
-package com.ascend.xssdemo.util;
+package com.ascend.demo.util;
 
 
 import org.apache.commons.lang3.StringUtils;

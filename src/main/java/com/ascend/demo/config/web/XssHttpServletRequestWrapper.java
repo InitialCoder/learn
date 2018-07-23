@@ -1,4 +1,4 @@
-package com.ascend.xssdemo.config.web;
+package com.ascend.demo.config.web;
 
 
 import java.util.ArrayList;
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequestWrapper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.util.HtmlUtils;
 
-import com.ascend.xssdemo.util.Assert;
-import com.ascend.xssdemo.util.JsoupUtil;
+import com.ascend.demo.util.Assert;
+import com.ascend.demo.util.JsoupUtil;
 
 
 public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper{

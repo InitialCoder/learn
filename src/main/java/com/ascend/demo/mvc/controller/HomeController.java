@@ -1,10 +1,10 @@
-package com.ascend.xssdemo.mvc.controller;
+package com.ascend.demo.mvc.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.ascend.xssdemo.mvc.model.ResultInfo;
+import com.ascend.demo.mvc.model.ResultInfo;
 
 @Controller
 @RequestMapping("/home")
