@@ -19,7 +19,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.core.annotation.Order;
 
+@Order(1)
 @WebFilter(filterName="xssMyfilter",urlPatterns="/*") 
 public class XssFilter implements Filter{
 
