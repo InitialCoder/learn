@@ -19,7 +19,7 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper{
 	HttpServletRequest orgRequest = null;  
   
 	/**
-	 * 不需要转码的富文本字段
+	 * 不需要转义的富文本字段
 	 */
 	private static List<String> excludeParam;
 	
