@@ -35,9 +35,9 @@ public class HomeController {
 	
 	@RequestMapping("/get1.json")
 	@ResponseBody
-	public SystemUserDO get1(ResultInfo info){
+	public SystemUserDO get1(){
 
-		return userDao.getById(new Long(123));
+		return userDao.getById(new Long("123"));
 		
 	}
 }

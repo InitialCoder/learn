@@ -22,13 +22,13 @@ public class SystemUserDO implements Serializable{
 	
 	private String email;
 	
-	private Date create_time;
+	private Date createTime;
 	
-	private String create_code;
+	private String createCode;
 	
-	private String modify_code;
+	private String modifyCode;
 	
-	private Date modify_time;
+	private Date modifyTime;
 
 	public long getId() {
 		return id;
@@ -78,37 +78,36 @@ public class SystemUserDO implements Serializable{
 		this.email = email;
 	}
 
-	public String getCreate_code() {
-		return create_code;
+	public Date getCreateTime() {
+		return createTime;
 	}
 
-	public void setCreate_code(String create_code) {
-		this.create_code = create_code;
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
 	}
 
-	public String getModify_code() {
-		return modify_code;
+	public String getCreateCode() {
+		return createCode;
 	}
 
-	public void setModify_code(String modify_code) {
-		this.modify_code = modify_code;
+	public void setCreateCode(String createCode) {
+		this.createCode = createCode;
 	}
 
-	public Date getCreate_time() {
-		return create_time;
+	public String getModifyCode() {
+		return modifyCode;
 	}
 
-	public void setCreate_time(Date create_time) {
-		this.create_time = create_time;
+	public void setModifyCode(String modifyCode) {
+		this.modifyCode = modifyCode;
 	}
 
-	public Date getModify_time() {
-		return modify_time;
+	public Date getModifyTime() {
+		return modifyTime;
 	}
 
-	public void setModify_time(Date modify_time) {
-		this.modify_time = modify_time;
+	public void setModifyTime(Date modifyTime) {
+		this.modifyTime = modifyTime;
 	}
-	
 	
 }

@@ -1,4 +1,4 @@
-package com.ascend.demo.test;
+package com.ascend.test;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
