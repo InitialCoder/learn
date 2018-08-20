@@ -1,5 +1,9 @@
 package com.ascend.test;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +20,27 @@ import com.ascend.demo.auth.service.SystemUserService;
 @SpringBootTest
 public class TestMybatis {
 
+	@Autowired
 	private SystemUserService service;
 	
 	@Test
 	public void test1(){
-		
-		SystemUserDO pojo=service.getById(new Long(""));
-		System.out.println(pojo.getUserAccount());
-		System.out.println(pojo.getEmail());
+		List<SystemUserDO> list=new ArrayList<SystemUserDO>();
+		SystemUserDO pojo;
+		for(int i=0;i<10;i++){
+			pojo=new SystemUserDO();
+			pojo.setAge(16+1);
+			pojo.setCreateCode("wu"+1);
+			pojo.setEmail("11111@qq.com"+1);
+			pojo.setModifyCode("he"+1);
+			pojo.setModifyTime(new Date());
+			pojo.setSex("man"+1);
+			pojo.setUserAccount("adtest1"+1);
+			pojo.setUserName("ad测试"+1);
+			list.add(pojo);
+		}
+		int num =service.saveList(list);
+		System.out.println(num);
 	}
 	
 }

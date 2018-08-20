@@ -2,8 +2,159 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ascend.demo.auth.dao.SystemUserDao" >
+	<insert id="saveOne" parameterType="com.ascend.demo.auth.domain.SystemUserDO" useGeneratedKeys="true" keyProperty="id">
+		insert into le_system_user(
+			`user_account`,
+			`user_name`,
+			`age`,
+			`sex`,
+			`email`,
+			`create_time`,
+			`create_code`,
+			`modify_time`,
+			`modify_code`
+		)values(
+			#{userAccount},
+			#{userName},
+			#{age},
+			#{sex},
+			#{email},
+			#{createTime},
+			#{createCode},
+			#{modifyTime},
+			#{modifyCode}
+		)
+	</insert>
+	<insert id="saveList" parameterType="List" useGeneratedKeys="true" keyProperty="id">
+		insert into le_system_user(
+			`user_account`,
+			`user_name`,
+			`age`,
+			`sex`,
+			`email`,
+			`create_time`,
+			`create_code`,
+			`modify_time`,
+			`modify_code`
+		)values
+		<foreach collection="list" item="item" index="index" separator=",">
+			(#{item.userAccount},
+			#{item.userName},
+			#{item.age},
+			#{item.sex},
+			#{item.email},
+			#{item.createTime},
+			#{item.createCode},
+			#{item.modifyTime},
+			#{item.modifyCode}
+			)
+		</foreach>
+	</insert>
+	<update id="update" parameterType="com.ascend.demo.auth.domain.SystemUserDO">
+		update le_system_user set
+			user_account=#{userAccount},
+			user_name=#{userName},
+			age=#{age},
+			sex=#{sex},
+			email=#{email},
+			modify_time=#{modifyTime},
+			modify_code=#{modifyCode}
+		where id=#{id};
+	</update>
+
+
+<!--批量逐条更新 	一直报错 ,未找到原因和解决方法
+	<update id="updateList" parameterType="List">
+		<foreach collection="list" item="item" index="index" open="" close="" separator=";">
+			update le_system_user
+				<set>
+				user_account=#{item.userAccount},
+				user_name=#{item.userName},
+				age=#{item.age},
+				sex=#{item.sex},
+				email=#{item.email},
+				modify_time=#{item.modifyTime},
+				modify_code=#{item.modifyCode}
+				</set>
+			where id=#{item.id}
+		</foreach>
+	</update> -->
+	
+	<!--  批量多条数据一起更新 -->
+	<update id="updateList" parameterType="List">
+			update le_system_user
+				<trim prefix="set" suffixOverrides=",">
+					<trim prefix="user_account=case" suffix="end,">
+						<foreach collection="list" item="i" index="index">
+							<if test="i.id!=null">
+						        when id=#{i.id} then #{i.userAccount}
+							</if> 
+						</foreach>
+					</trim>
+					<trim prefix="user_name=case" suffix="end,">
+						<foreach collection="list" item="i" index="index" >
+							<if test="i.id!=null">
+							   when id=#{i.id} then #{i.userName}
+							</if>
+						</foreach>
+					</trim>
+					<trim prefix="age=case" suffix="end,">
+						<foreach collection="list" item="i" index="index" >
+							<if test="i.id!=null">
+							   when id=#{i.id} then #{i.age}
+							</if>
+						</foreach>
+					</trim>
+					<trim prefix="sex=case" suffix="end,">
+						<foreach collection="list" item="i" index="index" >
+							<if test="i.id!=null">
+							     when id=#{i.id} then #{i.sex} 
+							</if>
+						</foreach>
+					</trim>
+					<trim prefix="email=case" suffix="end,">
+						<foreach collection="list" item="i" index="index" >
+							<if test="i.id!=null">
+							    when id=#{i.id} then #{i.email} 
+							</if>
+						</foreach>
+					</trim>
+					<trim prefix="modify_time=case" suffix="end,">
+						<foreach collection="list" item="i" index="index" >
+							<if test="i.id!=null">
+							    when id=#{i.id} then #{i.modifyTime} 
+							</if>
+						</foreach>
+					</trim>
+					<trim prefix="modify_code=case" suffix="end,">
+						<foreach collection="list" item="i" index="index">
+							<if test="i.id!=null">
+							   when id=#{i.id} then #{i.modifyCode} 
+							</if>
+						</foreach>
+					</trim>
+				</trim>
+				where 
+				<foreach collection="list" separator="or" item="i" index="index">
+				     id=#{i.id} 
+				</foreach>
+	</update>
+	
 	<select id="getById" parameterType="long" resultType="com.ascend.demo.auth.domain.SystemUserDO">
 		select * from le_system_user where id=#{value}
 	</select>
-
+	<select id="findAll" resultType="com.ascend.demo.auth.domain.SystemUserDO">
+		select * from le_system_user
+	</select>
+	
+	<delete id="deleteById" parameterType="Long" >
+		delete from le_system_user where id=#{}
+	</delete>
+	<delete id="deleteByIds" parameterType="List">
+		delete from le_system_user where 
+		<foreach collection="list" item="item" index="index" separator="or">
+			id=#{item}
+		</foreach>
+	</delete>
+	
 </mapper>
