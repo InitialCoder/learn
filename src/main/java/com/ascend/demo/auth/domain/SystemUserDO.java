@@ -10,7 +10,7 @@ public class SystemUserDO implements Serializable{
 	 */
 	private static final long serialVersionUID = 5111583159334490155L;
 
-	private long id;
+	private String id;
 	
 	private String userAccount;
 	
@@ -32,11 +32,12 @@ public class SystemUserDO implements Serializable{
 	
 	private OneToOneDO one;
 
-	public long getId() {
+
+	public String getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

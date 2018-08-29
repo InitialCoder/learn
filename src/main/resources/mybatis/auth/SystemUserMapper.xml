@@ -140,7 +140,7 @@
 				</foreach>
 	</update>
 	
-	<select id="getById" parameterType="long" resultType="com.ascend.demo.auth.domain.SystemUserDO">
+	<select id="getById" parameterType="String" resultType="com.ascend.demo.auth.domain.SystemUserDO">
 		select * from le_system_user where id=#{value}
 	</select>
 	<select id="findAll" resultType="com.ascend.demo.auth.domain.SystemUserDO">

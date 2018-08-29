@@ -10,7 +10,7 @@ import com.ascend.demo.auth.domain.SystemUserDTO;
 @Mapper
 public interface SystemUserDao {
 
-	SystemUserDO getById(Long value);
+	SystemUserDO getById(String value);
 	
 	int saveOne(SystemUserDO pojo);
 	int saveList(List<SystemUserDO> pojos);
@@ -21,7 +21,7 @@ public interface SystemUserDao {
 	
 	List<SystemUserDO> findByWhere(SystemUserDTO dto);
 	
-	SystemUserDO oneToOneselect(Long leId);
+	SystemUserDO oneToOneselect(String leId);
 }
 
 

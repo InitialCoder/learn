@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ascend.demo.auth.dao.OneToOneDao" >
+	<insert id="saveOne" parameterType="com.ascend.demo.auth.domain.SystemRoleDO" useGeneratedKeys="true" keyProperty="id">
+		insert into le_system_role(
+			`role_code`,
+			`role_name`,
+			`create_code`,
+			`create_time`,
+			`modify_time`,
+			`modify_code`,
+			`state`
+		)values(
+			#{roleCode},
+			#{roleName},
+			#{createCode},
+			#{createTime},
+			#{modifyTime},
+			#{modifyCode},
+			#{state}
+		)
+	</insert>
+	
+	<update id="update" parameterType="com.ascend.demo.auth.domain.SystemRoleDO">
+		update le_system_role set
+			role_code=#{roleCode},
+			role_name=#{roleName},
+			create_code=#{createCode},
+			create_time=#{createTime},
+			modify_time=#{modifyTime},
+			modify_code=#{modifyCode},
+			state=#{state}
+		where id=#{id};
+	</update>
+	
+	<select id="getByid" parameterType="String">
+		select * from le_system_role where id=#{id}
+	</select>
+	
+	<select id="findAll" resultType="com.ascend.demo.auth.domain.SystemUserDO">
+		select * from le_system_role
+	</select>
+	
+</mapper>

@@ -19,7 +19,7 @@ public class SystemUserServiceImpl implements SystemUserService{
 	private SystemUserDao userDao;
 	
 	@Override
-	public SystemUserDO getById(Long id) {
+	public SystemUserDO getById(String id) {
 		
 		return userDao.getById(id);
 	}
@@ -62,7 +62,7 @@ public class SystemUserServiceImpl implements SystemUserService{
 	}
 
 	@Override
-	public SystemUserDO findOneToOne(Long id) {
+	public SystemUserDO findOneToOne(String id) {
 		return userDao.oneToOneselect(id);
 	}
 

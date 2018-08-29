@@ -7,7 +7,7 @@
 			`code`,
 			`user_id`
 		)values(
-			#{code}
+			#{code},
 			#{userId}
 		)
 	</insert>

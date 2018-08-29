@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.ascend.demo.auth.dao.SystemUserDao;
 import com.ascend.demo.auth.domain.SystemUserDO;
 import com.ascend.demo.auth.service.SystemUserService;
 import com.ascend.demo.mvc.model.ResultInfo;
@@ -82,7 +81,7 @@ public class HomeController {
 	@RequestMapping("udpate1.json")
 	@ResponseBody
 	public int update1(){
-		SystemUserDO user=service.getById(new Long(123));
+		SystemUserDO user=service.getById("123");
 		user.setAge(100);
 		user.setModifyCode("galigey");
 		return service.update(user);

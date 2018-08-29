@@ -1,8 +1,8 @@
 package com.ascend.demo.config.web;
 
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
@@ -18,28 +18,34 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper{
 
 	HttpServletRequest orgRequest = null;  
   
+
 	/**
-	 * 不需要转义的富文本字段
+	 * 不需要转码的富文本字段    字段名称，是否模糊匹配
 	 */
-	private static List<String> excludeParam;
+	private static Map<String,Boolean> excludeParam;
 	
 	static{
-		excludeParam=new ArrayList<String>();
-		excludeParam.add("content");
-		excludeParam.add("contents");
-		excludeParam.add("descrip");
-		excludeParam.add("answer");
-		excludeParam.add("remessage");
-		excludeParam.add("smessage");
-		excludeParam.add("reply");
-		excludeParam.add("theme");
-		excludeParam.add("locale");
-		excludeParam.add("role");
-		excludeParam.add("site_preference");
-		excludeParam.add("format");
-		excludeParam.add("verifyMsg");
-		excludeParam.add("question");
-		excludeParam.add("otherReason");
+		excludeParam=new HashMap<String,Boolean>();
+		excludeParam.put("content",false);
+		excludeParam.put("contents",false);
+		excludeParam.put("descrip",false);
+		excludeParam.put("answer",false);
+		excludeParam.put("remessage",false);
+		excludeParam.put("smessage",false);
+		excludeParam.put("reply",false);
+		excludeParam.put("theme",false);
+		excludeParam.put("locale",false);
+		excludeParam.put("role",false);
+		excludeParam.put("site_preference",false);
+		excludeParam.put("format",false);
+		excludeParam.put("verifyMsg",false);
+		excludeParam.put("question",false);
+		excludeParam.put("otherReason",false);
+		excludeParam.put("imageInput",false);
+		excludeParam.put("dataList",false);
+		excludeParam.put("prompt",false);
+		excludeParam.put("vdef",true);
+		excludeParam.put("sms",true);
 	}
 	
 	
@@ -121,6 +127,7 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper{
     }  
 
     
+    
     public static boolean handleExcludeParam(String param){
     	
     	if(Assert.isEmpty(param)){
@@ -129,13 +136,16 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper{
     	if (excludeParam == null || excludeParam.isEmpty()) {
 			return false;
 		}
-    	for (String str : excludeParam) {
-			if(str.equals(param)){
-				return true;
+		if(excludeParam.containsKey(param)){
+			return true;
+		}else{
+			for (Map.Entry<String,Boolean> entry : excludeParam.entrySet()) {
+				if(entry.getValue()&&param.indexOf(entry.getKey())>=0){
+					return true; 
+				}
 			}
-		}
     	return false;
-    	
+		}
+    
     }
-
 }

@@ -7,7 +7,7 @@ import com.ascend.demo.auth.domain.SystemUserDTO;
 
 public interface SystemUserService {
 
-	SystemUserDO getById(Long id);
+	SystemUserDO getById(String id);
 	
 	int saveOne(SystemUserDO pojo);
 	int saveList(List<SystemUserDO> pojo);
@@ -20,5 +20,5 @@ public interface SystemUserService {
 	
 	List<SystemUserDO> findByWhere(SystemUserDTO dto);
 	
-	SystemUserDO findOneToOne(Long id);
+	SystemUserDO findOneToOne(String id);
 }
