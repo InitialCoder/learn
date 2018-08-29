@@ -178,7 +178,7 @@
 	</delete>
 	
 	<!-- 一对一第一种写法 -->
-	<resultMap type="com.ascend.demo.auth.domain.SystemUserDO" id="oneResultMap">
+	<!-- <resultMap type="com.ascend.demo.auth.domain.SystemUserDO" id="oneResultMap">
 		<id column="id" property="id"/>
 		<result column="user_account" property="userAccount"/>
 		<result column="user_name" property="userName"/>
@@ -195,10 +195,64 @@
 		<result column="id" property="one.userId"/>
 		
 	</resultMap>
-	
 	<select id="oneToOneselect"  resultMap="oneResultMap" >
 		select le.*,one.id oid,one.code code from le_system_user le left join le_one_one one on le.id=one.user_id where le.id=#{leId};
+	</select> -->
+	
+	<!-- 一对一第二种写法 -->
+	<!-- <resultMap type="com.ascend.demo.auth.domain.SystemUserDO" id="oneResultMap">
+		<id column="id" property="id"/>
+		<result column="user_account" property="userAccount"/>
+		<result column="user_name" property="userName"/>
+		<result column="age" property="age"/>
+		<result column="sex" property="sex"/>
+		<result column="email" property="email"/>
+		<result column="create_time" property="createTime"/>
+		<result column="create_code" property="createCode"/>
+		<result column="modify_time" property="modifyTime"/>
+		<result column="modify_code" property="modifyCode"/>
+		
+		<association property="one" javaType="com.ascend.demo.auth.domain.OneToOneDO">
+			<result column="code" property="code"/>
+			<result column="oid" property="id"/>
+			<result column="id" property="userId"/>
+		</association>
+		
+	</resultMap>
+	<select id="oneToOneselect"  resultMap="oneResultMap" >
+		select le.*,one.id oid,one.code code from le_system_user le left join le_one_one one on le.id=one.user_id where le.id=#{leId};
+	</select> -->
+	
+	<!-- 一对一 第三种写法，可以实现懒加载 -->
+	<resultMap type="com.ascend.demo.auth.domain.OneToOneDO" id="OneToOneResultMap">
+		<result column="code" property="code"/>
+		<result column="id" property="id"/>
+		<result column="user_id" property="userId"/>
+	</resultMap>
+	
+	<select id="select_one_by_userId" resultMap="OneToOneResultMap" parameterType="String">
+		select id,code,user_id from le_one_one where user_id=#{userId}
 	</select>
+	
+	<resultMap type="com.ascend.demo.auth.domain.SystemUserDO" id="oneResultMap">
+		<id column="id" property="id"/>
+		<result column="user_account" property="userAccount"/>
+		<result column="user_name" property="userName"/>
+		<result column="age" property="age"/>
+		<result column="sex" property="sex"/>
+		<result column="email" property="email"/>
+		<result column="create_time" property="createTime"/>
+		<result column="create_code" property="createCode"/>
+		<result column="modify_time" property="modifyTime"/>
+		<result column="modify_code" property="modifyCode"/>
+		
+		<association property="one" column="id" select="select_one_by_userId"/>
+		
+	</resultMap>
+	<select id="oneToOneselect"  resultMap="oneResultMap" >
+		select * from le_system_user where id=#{leId};
+	</select>
+	
 	
 	
 </mapper>
