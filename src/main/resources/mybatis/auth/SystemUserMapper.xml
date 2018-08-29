@@ -12,7 +12,7 @@
 			`create_time`,
 			`create_code`,
 			`modify_time`,
-			`modify_code`
+			`modify_code`,
 		)values(
 			#{userAccount},
 			#{userName},
@@ -22,7 +22,7 @@
 			#{createTime},
 			#{createCode},
 			#{modifyTime},
-			#{modifyCode}
+			#{modifyCode},
 		)
 	</insert>
 	<insert id="saveList" parameterType="List" useGeneratedKeys="true" keyProperty="id">
@@ -35,7 +35,7 @@
 			`create_time`,
 			`create_code`,
 			`modify_time`,
-			`modify_code`
+			`modify_code`,
 		)values
 		<foreach collection="list" item="item" index="index" separator=",">
 			(#{item.userAccount},
@@ -46,7 +46,7 @@
 			#{item.createTime},
 			#{item.createCode},
 			#{item.modifyTime},
-			#{item.modifyCode}
+			#{item.modifyCode},
 			)
 		</foreach>
 	</insert>
@@ -144,11 +144,31 @@
 		select * from le_system_user where id=#{value}
 	</select>
 	<select id="findAll" resultType="com.ascend.demo.auth.domain.SystemUserDO">
-		select * from le_system_user
+		select * from le_system_user;
+	</select>
+	
+	<select id="findByWhere" parameterType="com.ascend.demo.auth.domain.SystemUserDTO" resultType="com.ascend.demo.auth.domain.SystemUserDO">
+		select 
+			`user_account`,
+			`user_name`,
+			`age`,
+			`sex`,
+			`email`,
+			`create_time`,
+			`create_code`,
+			`modify_time`,
+			`modify_code` ,
+		from le_system_user where 1=1
+		<if test="userAccount!=null and userAccount!=''">and (instr(user_account,#{userAccount})>0 or instr(user_name,#{userAccount})>0) </if>
+		<if test="age!=null and age!=''">and age=#{age} </if>
+		<if test="createCode!=null and createCode!=''">and instr(create_code,#{createCode})>0</if>
+		<if test="modifyCode!=null and modifyCode!=''">and instr(modify_code,#{modifyCode})>0</if>
+		<if test="modifyTime!=null and modifyTime!=''">and modify_time=#{modifyTime}</if>
+		
 	</select>
 	
 	<delete id="deleteById" parameterType="Long" >
-		delete from le_system_user where id=#{}
+		delete from le_system_user where id=#{id}
 	</delete>
 	<delete id="deleteByIds" parameterType="List">
 		delete from le_system_user where 
@@ -156,5 +176,29 @@
 			id=#{item}
 		</foreach>
 	</delete>
+	
+	<!-- 一对一第一种写法 -->
+	<resultMap type="com.ascend.demo.auth.domain.SystemUserDO" id="oneResultMap">
+		<id column="id" property="id"/>
+		<result column="user_account" property="userAccount"/>
+		<result column="user_name" property="userName"/>
+		<result column="age" property="age"/>
+		<result column="sex" property="sex"/>
+		<result column="email" property="email"/>
+		<result column="create_time" property="createTime"/>
+		<result column="create_code" property="createCode"/>
+		<result column="modify_time" property="modifyTime"/>
+		<result column="modify_code" property="modifyCode"/>
+		
+		<result column="code" property="one.code"/>
+		<result column="oid" property="one.id"/>
+		<result column="id" property="one.userId"/>
+		
+	</resultMap>
+	
+	<select id="oneToOneselect"  resultMap="oneResultMap" >
+		select le.*,one.id oid,one.code code from le_system_user le left join le_one_one one on le.id=one.user_id where le.id=#{leId};
+	</select>
+	
 	
 </mapper>

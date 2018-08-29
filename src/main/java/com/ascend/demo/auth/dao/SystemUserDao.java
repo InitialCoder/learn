@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.ascend.demo.auth.domain.SystemUserDO;
+import com.ascend.demo.auth.domain.SystemUserDTO;
 
 @Mapper
 public interface SystemUserDao {
@@ -17,4 +18,10 @@ public interface SystemUserDao {
 	int updateList(List<SystemUserDO> pojos);
 	
 	List<SystemUserDO> findAll();
+	
+	List<SystemUserDO> findByWhere(SystemUserDTO dto);
+	
+	SystemUserDO oneToOneselect(Long leId);
 }
+
+

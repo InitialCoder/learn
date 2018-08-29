@@ -29,6 +29,8 @@ public class SystemUserDO implements Serializable{
 	private String modifyCode;
 	
 	private Date modifyTime;
+	
+	private OneToOneDO one;
 
 	public long getId() {
 		return id;
@@ -108,6 +110,20 @@ public class SystemUserDO implements Serializable{
 
 	public void setModifyTime(Date modifyTime) {
 		this.modifyTime = modifyTime;
+	}
+
+	public OneToOneDO getOne() {
+		return one;
+	}
+
+	public void setOne(OneToOneDO one) {
+		this.one = one;
+	}
+	
+	@Override
+	public String toString() {
+		
+		return this.one.toString()+"==-="+this.userAccount;
 	}
 	
 }

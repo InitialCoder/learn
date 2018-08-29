@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ascend.demo.auth.dao.SystemUserDao;
 import com.ascend.demo.auth.domain.SystemUserDO;
+import com.ascend.demo.auth.domain.SystemUserDTO;
 import com.ascend.demo.auth.service.SystemUserService;
 
 @Service
@@ -53,6 +54,16 @@ public class SystemUserServiceImpl implements SystemUserService{
 	public List<SystemUserDO> findAll() {
 		
 		return userDao.findAll();
+	}
+
+	@Override
+	public List<SystemUserDO> findByWhere(SystemUserDTO dto) {
+		return 	userDao.findByWhere(dto);
+	}
+
+	@Override
+	public SystemUserDO findOneToOne(Long id) {
+		return userDao.oneToOneselect(id);
 	}
 
 }
