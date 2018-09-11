@@ -4,6 +4,6 @@
 
 20180715--springboot集成jsp并简单记载一次服务器xss防御、富文本kindeditor的xss漏洞防御
 
-集成mybatis mysql mybatis的常用写法：基本的crud,一对一，一对多
+集成mybatis mysql mybatis的常用写法：基本的crud,一对一，一对多动态sql等
 
 
