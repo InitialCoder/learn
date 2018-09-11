@@ -47,7 +47,7 @@ public class XssFilter implements Filter{
     @Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException,ServletException {
     	if(logger.isDebugEnabled()){
-  			logger.debug("xss filter is open");
+//  			logger.debug("xss filter is open");
   		}
   		
   		HttpServletRequest req = (HttpServletRequest) request;

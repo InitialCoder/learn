@@ -1,4 +1,4 @@
-package com.ascend.demo.auth.domain;
+package com.ascend.demo.auth.domain.dto;
 
 import java.util.Date;
 

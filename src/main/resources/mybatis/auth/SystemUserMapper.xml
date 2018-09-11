@@ -140,14 +140,23 @@
 				</foreach>
 	</update>
 	
-	<select id="getById" parameterType="String" resultType="com.ascend.demo.auth.domain.SystemUserDO">
+	<resultMap type="com.ascend.demo.auth.domain.SystemUserDO" id="systemUserResult">
+		<collection property="auths" javaType="ArrayList" column="user_account" ofType="SystemAuthorizationDO" select="selectAuthForUser"></collection>
+	</resultMap>
+	
+	<select id="selectAuthForUser" resultType="com.ascend.demo.auth.domain.SystemAuthorizationDO">
+		select * from le_user_authorization where user_account=#{userAccount}
+	</select>
+	
+	<select id="getById" parameterType="String" resultMap="systemUserResult">
 		select * from le_system_user where id=#{value}
 	</select>
+	
 	<select id="findAll" resultType="com.ascend.demo.auth.domain.SystemUserDO">
 		select * from le_system_user;
 	</select>
 	
-	<select id="findByWhere" parameterType="com.ascend.demo.auth.domain.SystemUserDTO" resultType="com.ascend.demo.auth.domain.SystemUserDO">
+	<select id="findByWhere" parameterType="com.ascend.demo.auth.domain.dto.SystemUserDTO" resultType="com.ascend.demo.auth.domain.SystemUserDO">
 		select 
 			`user_account`,
 			`user_name`,

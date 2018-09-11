@@ -2,6 +2,7 @@ package com.ascend.demo.auth.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class SystemUserDO implements Serializable{
 
@@ -31,7 +32,8 @@ public class SystemUserDO implements Serializable{
 	private Date modifyTime;
 	
 	private OneToOneDO one;
-
+	
+	private List<SystemAuthorizationDO> auths; 
 
 	public String getId() {
 		return id;
@@ -121,10 +123,19 @@ public class SystemUserDO implements Serializable{
 		this.one = one;
 	}
 	
+	public List<SystemAuthorizationDO> getAuths() {
+		return auths;
+	}
+
+	public void setAuths(List<SystemAuthorizationDO> auths) {
+		this.auths = auths;
+	}
+
 	@Override
 	public String toString() {
-		
-		return this.one.toString()+"==-="+this.userAccount;
+		return "SystemUserDO [id=" + id + ", userAccount=" + userAccount +  ", one=" + one + ", auths=" + auths
+				+ "]";
 	}
+
 	
 }

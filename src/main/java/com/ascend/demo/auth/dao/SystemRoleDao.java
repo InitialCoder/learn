@@ -13,6 +13,7 @@ public interface SystemRoleDao {
 	int saveOne(SystemRoleDO pojo);
 	int update(SystemRoleDO pojo);
 	List<SystemRoleDO> findAll();
+	int deleteById(String id);
 }
 
 

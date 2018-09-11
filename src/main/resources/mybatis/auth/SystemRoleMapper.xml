@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.ascend.demo.auth.dao.OneToOneDao" >
+<mapper namespace="com.ascend.demo.auth.dao.SystemRoleDao" >
 	<insert id="saveOne" parameterType="com.ascend.demo.auth.domain.SystemRoleDO" useGeneratedKeys="true" keyProperty="id">
 		insert into le_system_role(
 			`role_code`,
@@ -34,12 +34,16 @@
 		where id=#{id};
 	</update>
 	
-	<select id="getByid" parameterType="String">
+	<select id="getByid" parameterType="String" resultType="com.ascend.demo.auth.domain.SystemRoleDO">
 		select * from le_system_role where id=#{id}
 	</select>
 	
-	<select id="findAll" resultType="com.ascend.demo.auth.domain.SystemUserDO">
+	<select id="findAll" resultType="com.ascend.demo.auth.domain.SystemRoleDO">
 		select * from le_system_role
 	</select>
+	
+	<delete id="deleteById" parameterType="String">
+		delete from le_system_role where id=#{id}
+	</delete>
 	
 </mapper>

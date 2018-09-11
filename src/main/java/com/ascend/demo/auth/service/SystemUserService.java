@@ -3,7 +3,7 @@ package com.ascend.demo.auth.service;
 import java.util.List;
 
 import com.ascend.demo.auth.domain.SystemUserDO;
-import com.ascend.demo.auth.domain.SystemUserDTO;
+import com.ascend.demo.auth.domain.dto.SystemUserDTO;
 
 public interface SystemUserService {
 

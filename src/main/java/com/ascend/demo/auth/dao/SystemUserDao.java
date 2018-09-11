@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.ascend.demo.auth.domain.SystemUserDO;
-import com.ascend.demo.auth.domain.SystemUserDTO;
+import com.ascend.demo.auth.domain.dto.SystemUserDTO;
 
 @Mapper
 public interface SystemUserDao {

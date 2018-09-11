@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ascend.demo.auth.dao.SystemUserDao;
 import com.ascend.demo.auth.domain.SystemUserDO;
-import com.ascend.demo.auth.domain.SystemUserDTO;
+import com.ascend.demo.auth.domain.dto.SystemUserDTO;
 import com.ascend.demo.auth.service.SystemUserService;
 
 @Service

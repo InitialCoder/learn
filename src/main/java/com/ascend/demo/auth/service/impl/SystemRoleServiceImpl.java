@@ -2,6 +2,7 @@ package com.ascend.demo.auth.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,6 +14,7 @@ import com.ascend.demo.auth.service.SystemRoleService;
 @Transactional(readOnly=true)
 public class SystemRoleServiceImpl implements SystemRoleService {
 
+	@Autowired
 	private SystemRoleDao roleDao;
 	
 	@Override
@@ -21,11 +23,13 @@ public class SystemRoleServiceImpl implements SystemRoleService {
 	}
 
 	@Override
+	@Transactional
 	public int saveOne(SystemRoleDO pojo) {
 		return roleDao.saveOne(pojo);
 	}
 
 	@Override
+	@Transactional
 	public int update(SystemRoleDO pojo) {
 		return roleDao.update(pojo);
 	}
@@ -35,6 +39,10 @@ public class SystemRoleServiceImpl implements SystemRoleService {
 		return roleDao.findAll();
 	}
 
-	 
+	@Override
+	@Transactional
+	public int deleteById(String id) {
+		return roleDao.deleteById(id);
+	}
 	 
 }

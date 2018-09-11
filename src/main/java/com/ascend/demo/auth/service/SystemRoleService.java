@@ -14,4 +14,6 @@ public interface SystemRoleService {
 	
 	List<SystemRoleDO> findAll();
 	
+	int deleteById(String id);
+	
 }
