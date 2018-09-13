@@ -26,6 +26,19 @@
 	</div>
 
 </form>
+
+
+<div>
+
+	<br>
+	<br>
+	<br>
+	<form action="${ctx}/login/logout" >
+		<div>
+			<button type="submit"> logout</button>	
+		</div>
+</form>
+</div>
 <script type="text/javascript">
 	$(function(){
 		editor = KindEditor.create('#editor', {

@@ -1,4 +1,4 @@
-package com.ascend.demo.config.web;
+package com.ascend.demo.config.xss;
 
 
 import java.util.HashMap;

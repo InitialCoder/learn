@@ -17,6 +17,8 @@ public interface SystemUserDao {
 	int update(SystemUserDO pojo);
 	int updateList(List<SystemUserDO> pojos);
 	
+	List<SystemUserDO> findByUserAccount(String userAccount);
+	
 	List<SystemUserDO> findAll();
 	
 	List<SystemUserDO> findByWhere(SystemUserDTO dto);

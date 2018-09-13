@@ -66,4 +66,13 @@ public class SystemUserServiceImpl implements SystemUserService{
 		return userDao.oneToOneselect(id);
 	}
 
+	@Override
+	public SystemUserDO findByUserAccount(String userAccount) {
+		List<SystemUserDO> list=userDao.findByUserAccount(userAccount);
+		if(!list.isEmpty()){
+			return list.get(0);
+		}
+		return null;
+	}
+
 }

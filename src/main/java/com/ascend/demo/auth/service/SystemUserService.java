@@ -10,11 +10,14 @@ public interface SystemUserService {
 	SystemUserDO getById(String id);
 	
 	int saveOne(SystemUserDO pojo);
+	
 	int saveList(List<SystemUserDO> pojo);
 
 	int update(SystemUserDO pojos);
 
 	int update(List<SystemUserDO> pojos);
+	
+	SystemUserDO findByUserAccount(String userName);
 	
 	List<SystemUserDO> findAll();
 	

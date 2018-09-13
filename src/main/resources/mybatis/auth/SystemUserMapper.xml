@@ -6,6 +6,7 @@
 		insert into le_system_user(
 			`user_account`,
 			`user_name`,
+			`password`,
 			`age`,
 			`sex`,
 			`email`,
@@ -16,6 +17,7 @@
 		)values(
 			#{userAccount},
 			#{userName},
+			#{password},
 			#{age},
 			#{sex},
 			#{email},
@@ -29,6 +31,7 @@
 		insert into le_system_user(
 			`user_account`,
 			`user_name`,
+			`password`,
 			`age`,
 			`sex`,
 			`email`,
@@ -40,6 +43,7 @@
 		<foreach collection="list" item="item" index="index" separator=",">
 			(#{item.userAccount},
 			#{item.userName},
+			#{item.password},
 			#{item.age},
 			#{item.sex},
 			#{item.email},
@@ -54,6 +58,7 @@
 		update le_system_user set
 			user_account=#{userAccount},
 			user_name=#{userName},
+			password=#{password},
 			age=#{age},
 			sex=#{sex},
 			email=#{email},
@@ -62,7 +67,9 @@
 		where id=#{id};
 	</update>
 
-
+	<select id="findByUserAccount" parameterType="String" resultType="com.ascend.demo.auth.domain.SystemUserDO">
+		select * from le_system_user where user_account=#{userAccount}
+	</select>
 <!--批量逐条更新 	一直报错 ,未找到原因和解决方法
 	<update id="updateList" parameterType="List">
 		<foreach collection="list" item="item" index="index" open="" close="" separator=";">
@@ -95,6 +102,13 @@
 						<foreach collection="list" item="i" index="index" >
 							<if test="i.id!=null">
 							   when id=#{i.id} then #{i.userName}
+							</if>
+						</foreach>
+					</trim>
+					<trim prefix="password=case" suffix="end,">
+						<foreach collection="list" item="i" index="index" >
+							<if test="i.id!=null">
+							   when id=#{i.id} then #{i.password}
 							</if>
 						</foreach>
 					</trim>
@@ -160,6 +174,7 @@
 		select 
 			`user_account`,
 			`user_name`,
+			`password`,
 			`age`,
 			`sex`,
 			`email`,
@@ -247,6 +262,7 @@
 		<id column="id" property="id"/>
 		<result column="user_account" property="userAccount"/>
 		<result column="user_name" property="userName"/>
+		<result column="password" property="password"/>
 		<result column="age" property="age"/>
 		<result column="sex" property="sex"/>
 		<result column="email" property="email"/>

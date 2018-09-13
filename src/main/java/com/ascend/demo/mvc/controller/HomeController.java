@@ -20,7 +20,7 @@ public class HomeController {
 	@Autowired
 	private SystemUserService service;
 	
-	@RequestMapping("/index.action")
+	@RequestMapping({"index","/index.action"})
 	public String index(){
 		System.out.println("index");
 		return "index";
