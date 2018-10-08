@@ -1,4 +1,4 @@
-package com.ascend.demo.util;
+package com.ascend.demo.ext.util;
 
 /**
  * 对象工具类

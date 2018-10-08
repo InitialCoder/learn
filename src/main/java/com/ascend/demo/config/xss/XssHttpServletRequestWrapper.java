@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequestWrapper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.util.HtmlUtils;
 
-import com.ascend.demo.util.Assert;
-import com.ascend.demo.util.JsoupUtil;
+import com.ascend.demo.ext.util.Assert;
+import com.ascend.demo.ext.util.JsoupUtil;
 
 
 public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper{

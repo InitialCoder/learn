@@ -14,14 +14,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.ascend.demo.auth.domain.SystemUserDO;
 import com.ascend.demo.auth.service.SystemUserService;
 
-public class DemoShiroRealm extends AuthenticatingRealm{
+public class SecondShiroRealm extends AuthenticatingRealm{
 
-	@Autowired
-	private SystemUserService userService;
+	/*@Autowired
+	private SystemUserService userService;*/
 
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-		System.out.println("realm     111111111111111111");
+		System.out.println("realm     22222222222222222222");
 		//1 AuthenticationToken 转为userNamePasswordToken
 		//2 从usernamePasswordToken 中获取username;
 		//查询数据库
@@ -29,9 +29,14 @@ public class DemoShiroRealm extends AuthenticatingRealm{
 		//5 构件authentication 并且返回
 		UsernamePasswordToken pasToken=(UsernamePasswordToken) token;
 		String userAccount=pasToken.getUsername();
-		SystemUserDO user=userService.findByUserAccount(userAccount);
-		if(user==null){
-			throw new  UnknownAccountException("用户不存在！");
+		SystemUserDO user=new SystemUserDO();
+		user.setUserAccount(userAccount);
+		if(userAccount.equals("user1")){
+			user.setPassword("2e445f633466a856119e68dad79bee0518b49d21");
+		}else if(userAccount.equals("admin")){
+			user.setPassword("b68de2bd4d98a6af786b2b6ef86078d6d41d60df");
+		}else{
+			throw new UnknownAccountException("没有此用户！");
 		}
 		//参数说明： principal 认证的实体信息 可以是userAccount 也可以是数据表中对应的实体对象。
 		//		credential:密码
@@ -39,7 +44,6 @@ public class DemoShiroRealm extends AuthenticatingRealm{
 		//SimpleAuthenticationInfo info=new SimpleAuthenticationInfo(user, user.getPassword(), getName());
 		ByteSource salt=ByteSource.Util.bytes(userAccount);
 		SimpleAuthenticationInfo info=new SimpleAuthenticationInfo(user, user.getPassword(), salt, getName());
-		
 		
 		return info;
 	}

@@ -1,11 +1,23 @@
 package com.ascend.demo.config.shiro;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.AuthenticationInfo;
+import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
+import org.apache.shiro.authc.pam.AbstractAuthenticationStrategy;
+import org.apache.shiro.authc.pam.AllSuccessfulStrategy;
+import org.apache.shiro.authc.pam.AuthenticationStrategy;
+import org.apache.shiro.authc.pam.ModularRealmAuthenticator;
+import org.apache.shiro.mgt.SecurityManager;
+import org.apache.shiro.realm.Realm;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
-import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,17 +26,57 @@ import org.springframework.context.annotation.Configuration;
 public class ShiroConfiguration {
 
 	  //将自己的验证方式加入容器
+	@Bean
+	public ShiroRealm  shiroRealm() {
+		ShiroRealm realm = new ShiroRealm ();
+		HashedCredentialsMatcher hash=new HashedCredentialsMatcher();
+		hash.setHashAlgorithmName("MD5");
+		hash.setHashIterations(1024);
+		realm.setCredentialsMatcher(hash);
+		hash.setStoredCredentialsHexEncoded(true);
+		return realm;
+	}
     @Bean
-    public DemoShiroRealm  myShiroRealm() {
-        DemoShiroRealm myShiroRealm = new DemoShiroRealm ();
-        return myShiroRealm;
+    public DemoShiroRealm  realm1() {
+        DemoShiroRealm realm = new DemoShiroRealm ();
+        HashedCredentialsMatcher hash=new HashedCredentialsMatcher();
+        hash.setHashAlgorithmName("MD5");
+        hash.setHashIterations(1024);
+        realm.setCredentialsMatcher(hash);
+        hash.setStoredCredentialsHexEncoded(true);
+        return realm;
+    }
+    @Bean
+    public SecondShiroRealm  realm2() {
+    	SecondShiroRealm realm = new SecondShiroRealm ();
+    	HashedCredentialsMatcher hash=new HashedCredentialsMatcher();
+    	hash.setHashAlgorithmName("SHA1");
+    	hash.setHashIterations(1024);
+    	hash.setStoredCredentialsHexEncoded(true);
+    	realm.setCredentialsMatcher(hash);
+    	return realm;
     }
 
+    @Bean
+    public ModularRealmAuthenticator myAuthenticator(){
+    	ModularRealmAuthenticator authen=new ModularRealmAuthenticator();
+    	authen.setAuthenticationStrategy(new AllSuccessfulStrategy());//设置认证策略
+    	return authen;
+    }
+    
     //权限管理，配置主要是Realm的管理认证
     @Bean
     public SecurityManager securityManager() {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
-        securityManager.setRealm(myShiroRealm());
+//        securityManager.setRealm(myShiroRealm()); 单realm 写法
+        //多realm写法  myAuthenticator 可以设置认证策略，也可在里面配置多realms 属性
+       /* securityManager.setAuthenticator(myAuthenticator());*/
+        //直接将realMs 赋值给securityManager  好处：方便使用，权限检验的时候是需要这样配置滴
+        Collection<Realm> realms=new ArrayList<Realm>();
+//    	realms.add(realm1());
+//    	realms.add(realm2());
+        realms.add(shiroRealm());
+        securityManager.setRealms(realms);
         return securityManager;
     }
 
@@ -34,15 +86,18 @@ public class ShiroConfiguration {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         Map<String,String> map = new HashMap<String, String>();
+        //匿名过滤器
         map.put("/login/*","anon");
-        //登出
+        //登出过滤器
         map.put("/login/logout","logout");
+        map.put("/home/admin.action","roles[admin]");
+        map.put("/home/user.action","roles[user]");
         //对所有用户认证
         map.put("/**","authc");
        //登录
         shiroFilterFactoryBean.setLoginUrl("/login/index.action");
-        /*  //首页
-        shiroFilterFactoryBean.setSuccessUrl("/home/index");*/
+         //首页
+        shiroFilterFactoryBean.setSuccessUrl("/home/index");
         //错误页面，认证不通过跳转
         shiroFilterFactoryBean.setUnauthorizedUrl("/error");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(map);

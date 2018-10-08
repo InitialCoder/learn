@@ -6,6 +6,7 @@ import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,6 +33,7 @@ public class LoginController {
 		Subject currentUser=SecurityUtils.getSubject();
 		
 		if(!currentUser.isAuthenticated()){
+			
 			UsernamePasswordToken token=new UsernamePasswordToken(userAccount,password);
 			
 			token.setRememberMe(true);
@@ -40,12 +42,19 @@ public class LoginController {
 				currentUser.login(token);
 			}catch (UnknownAccountException uae) {
 				log.info("There is no user with the AccountName "+token.getPrincipal());
+				return "login";
 			}catch(IncorrectCredentialsException ice ){
 				log.info("The password of "+token.getPrincipal() +" is incorrect");
+				return "login";
 			}catch(LockedAccountException lae){
 				log.info("The account for username "+token.getPrincipal()+" is locked. Please contact you administrator to unlock it");
+				return "login";
 			}catch(AuthenticationException ae){
 				log.info("Authentication Exception");
+				return "login";
+			}catch(Exception e){
+				log.info(e.getMessage());
+				return "login";
 			}
 		}
 		

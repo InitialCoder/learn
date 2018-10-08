@@ -1,4 +1,4 @@
-package com.ascend.demo.util;
+package com.ascend.demo.ext.util;
 
 
 import org.apache.commons.lang3.StringUtils;
@@ -47,6 +47,17 @@ public class JsoupUtil {
         }
         return Jsoup.clean(content, "", whitelist, outputSettings);
 	}
+	
+	/**
+	 * 将富文本内容的所有标签去除，只保留文本内容
+	 * @param text
+	 * @return
+	 */
+	public static String saperateGraph(String text){
+		
+		return text.replaceAll("\\<([\\s\\S]*?)\\>", "");
+	}
+	
 	//测试
 	/*public static void main(String[] args) throws IOException {
 		String test ="F1000芜湖晋智房地产开发有限公司<img alt=\"\" src=\"/kindeditor/read?path=image/20161102/20161102084135_677.png\" /><img alt=\"\" src=\"/kindeditor/read?path=image/20161102/20161102084146_395.png\" />在从bpm传递外部费用报销单时，没有银行账号，但走bpm流程时已经把账号填写完整了，这样传递到nc的单子就不能使用银企直连支付了，请问该如何处理。"

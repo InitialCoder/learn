@@ -6,8 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ascend.demo.ext.util.DateUtil;
 import com.ascend.demo.mvc.model.FormQueryModel;
-import com.ascend.demo.util.DateUtil;
 
 @Controller
 @RequestMapping("help")

@@ -38,6 +38,19 @@
 			<button type="submit"> logout</button>	
 		</div>
 </form>
+
+<div>welcome:<shiro:principal>
+	
+</shiro:principal>
+
+</div>
+<shiro:hasRole name="admin">
+	<a href="${ctx}/home/admin.action">admin.jsp</a>
+</shiro:hasRole>
+<shiro:hasRole name="user">
+	<a href="${ctx}/home/user.action">user.jsp</a>
+</shiro:hasRole>
+<shiro:
 </div>
 <script type="text/javascript">
 	$(function(){

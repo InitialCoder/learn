@@ -110,4 +110,14 @@ public class HomeController {
 		
 	}
 	
+	@RequestMapping("admin.action")
+	public String admin(){
+		
+		return "admin";
+	}
+	@RequestMapping("user.action")
+	public String usern(){
+		
+		return "user";
+	}
 }
