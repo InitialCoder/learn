@@ -3,22 +3,17 @@ package com.ascend.demo.config.shiro;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationInfo;
-import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
-import org.apache.shiro.authc.pam.AbstractAuthenticationStrategy;
 import org.apache.shiro.authc.pam.AllSuccessfulStrategy;
-import org.apache.shiro.authc.pam.AuthenticationStrategy;
 import org.apache.shiro.authc.pam.ModularRealmAuthenticator;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -90,10 +85,10 @@ public class ShiroConfiguration {
         map.put("/login/*","anon");
         //登出过滤器
         map.put("/login/logout","logout");
-        map.put("/home/admin.action","roles[admin]");
-        map.put("/home/user.action","roles[user]");
-        //对所有用户认证
+        //对其他资源默认认证过滤
         map.put("/**","authc");
+        //对其他资源默认授权过滤
+//        map.put("/**","perms");
        //登录
         shiroFilterFactoryBean.setLoginUrl("/login/index.action");
          //首页

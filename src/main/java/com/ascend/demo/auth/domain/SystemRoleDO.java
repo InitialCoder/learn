@@ -1,12 +1,20 @@
 package com.ascend.demo.auth.domain;
 
+/**
+ * 系统角色
+ * @author wu
+ *
+ */
 public class SystemRoleDO {
 
-	
 	private String id;
-	
+	/**
+	 * 角色编码
+	 */
 	private String roleCode;
-	
+	/**
+	 * 角色名称
+	 */
 	private String roleName;
 	
 	private String createCode;
@@ -16,7 +24,9 @@ public class SystemRoleDO {
 	private String modifyTime;
 	
 	private String modifyCode;
-	
+	/**
+	 * 启用状态：Y/N
+	 */
 	private String state;
 
 	public String getId() {

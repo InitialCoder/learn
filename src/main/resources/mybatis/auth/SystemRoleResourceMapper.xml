@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ascend.demo.auth.dao.SystemRoleResourceDao" >
+	<insert id="saveOne" parameterType="com.ascend.demo.auth.domain.SystemRoleResourceDO" useGeneratedKeys="true" keyProperty="id">
+		insert into le_role_resource(
+			`role_id`,
+			`resource_id`
+		)values(
+			#{roleId},
+			#{resourceId}
+		)
+	</insert>
+	
+	<insert id="saveList" parameterType="List" useGeneratedKeys="true" keyProperty="id">
+		insert into le_role_resource(
+			`role_id`,
+			`resource_id`
+		)values
+		<foreach collection="list" item="item" index="index" separator=",">
+			(
+				#{item.roleId},
+				#{item.resourceId}
+			)
+		</foreach>
+	</insert>
+	
+	<select id="getByid" parameterType="String" resultType="com.ascend.demo.auth.domain.SystemRoleResourceDO">
+		select * from le_role_resource where id=#{id}
+	</select>
+	
+	<delete id="deleteById" parameterType="String">
+		delete from le_role_resource where id=#{id}
+	</delete>
+	
+	<select id="findByWhere" parameterType="com.ascend.demo.auth.domain.dto.SystemRoleResourceDTO" resultType="com.ascend.demo.auth.domain.SystemRoleResourceDO">
+		select * from le_role_resource 
+			<where><!--where 标签会将其后第一个条件的and或者是or给忽略掉 -->
+				<if test="roleId !=null"> role_id=#{roleId}</if>
+				<if test="resourceId !=null"> and resource_id=#{resourceId} </if>
+			</where>
+	</select>
+	
+	<select id="findByRoleId" parameterType="String" resultType="com.ascend.demo.auth.domain.SystemRoleResourceDO">
+		select * from le_role_resource where role_id=#{roleId}
+	</select>
+</mapper>

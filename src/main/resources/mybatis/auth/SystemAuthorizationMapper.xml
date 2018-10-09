@@ -5,12 +5,12 @@
 	<insert id="saveOne" parameterType="com.ascend.demo.auth.domain.SystemAuthorizationDO" useGeneratedKeys="true" keyProperty="id">
 		insert into le_user_authorization(
 			`user_account`,
-			`role_code`,
+			`role_id`,
 			`auth_area`,
 			`auth_data`
 		)values(
 			#{userAccount},
-			#{roleCode},
+			#{roleId},
 			#{authArea},
 			#{authData}
 		)
@@ -20,7 +20,7 @@
 		update le_user_authorization 
 			<set> <!-- 使用set元素，动态包含需要更新的列 ，set 元素会动态前置 SET 关键字，同时也会删掉无关的逗号-->
 			user_account=#{userAccount},
-			role_code=#{roleCode},
+			role_id=#{roleId},
 			auth_area=#{authArea},
 			auth_data=#{authData},
 			</set>
@@ -50,10 +50,10 @@
 	<select id="findByWhere" parameterType="com.ascend.demo.auth.domain.dto.SystemAuthorizationDTO" 
 		resultType="com.ascend.demo.auth.domain.SystemAuthorizationDO">
 		
-		select * from le_user_authorization 
+		select au.* from le_user_authorization au left join le_system_role ro on au.role_id=ro.id 
 		<where> <!-- 使用where 标签，会根据子元素是否返回语句动态添加where关键字 ，条件语句中可以使用choose, when, otherwise 作为开关语句-->
 			<if test="userAccount != null"> and instr(user_account,#{userAccount})>0</if>
-			<if test="roleCode != null"> and instr(roleCode,#{role})>0</if>
+			<if test="role != null"> and instr(ro.role_code,#{role})>0</if>
 		</where>
 	</select>
 	

@@ -34,7 +34,7 @@
 		where id=#{id};
 	</update>
 	
-	<select id="getByid" parameterType="String" resultType="com.ascend.demo.auth.domain.SystemRoleDO">
+	<select id="getById" parameterType="String" resultType="com.ascend.demo.auth.domain.SystemRoleDO">
 		select * from le_system_role where id=#{id}
 	</select>
 	

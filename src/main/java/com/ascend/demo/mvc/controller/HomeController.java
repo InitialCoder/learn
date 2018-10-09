@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -105,6 +107,7 @@ public class HomeController {
 	
 	@RequestMapping("findAll.json")
 	@ResponseBody
+	@RequiresPermissions(value={"home:findAll"})
 	public List<SystemUserDO> findAll(){
 		return service.findAll();
 		
@@ -119,5 +122,12 @@ public class HomeController {
 	public String usern(){
 		
 		return "user";
+	}
+	
+	@RequiresRoles(value={"USER"})
+	@RequestMapping("list.action")
+	public String list(){
+		
+		return "list";
 	}
 }

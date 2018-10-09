@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ascend.demo.auth.dao.SystemResourceDao" >
+	<insert id="saveOne" parameterType="com.ascend.demo.auth.domain.SystemResourceDO" useGeneratedKeys="true" keyProperty="id">
+		insert into le_system_resource(
+			`parent_id`,
+			`type`,
+			`resource_name`,
+			`perms`,
+			`url`,
+			`remark`,
+			`create_code`,
+			`create_time`,
+			`modify_time`,
+			`modify_code`
+		)values(
+			#{parentId},
+			#{type},
+			#{resourceName},
+			#{perms},
+			#{url},
+			#{remark},
+			#{createCode},
+			#{createTime},
+			#{modifyTime},
+			#{modifyCode}
+		)
+	</insert>
+	
+	<update id="update" parameterType="com.ascend.demo.auth.domain.SystemResourceDO">
+		update le_system_resource
+			<set><!-- 使用set元素，动态包含需要更新的列 ，set 元素会动态前置 SET 关键字，同时也会删掉无关的逗号-->
+			parent_id=#{parentId},
+			type=#{type},
+			resource_name=#{resourceName},
+			perms=#{perms},
+			url=#{url},
+			remark=#{remark},
+			create_code=#{createCode},
+			create_time=#{createTime},
+			modify_time=#{modifyTime},
+			modify_code=#{modifyCode}
+			</set>
+		where id=#{id};
+	</update>
+	
+	<select id="getByid" parameterType="String" resultType="com.ascend.demo.auth.domain.SystemResourceDO">
+		select * from le_system_resource where id=#{id}
+	</select>
+	
+	<select id="findByParentId" parameterType="String" resultType="com.ascend.demo.auth.domain.SystemResourceDO">
+		select * from from le_system_resource where parent_id=#{parentId}
+	</select>
+	
+	<delete id="deleteById" parameterType="String">
+		delete from le_system_resource where id=#{id}
+	</delete>
+	
+	<select id="findByWhere" parameterType="com.ascend.demo.auth.domain.dto.SystemResourceDTO" resultType="com.ascend.demo.auth.domain.SystemResourceDO">
+		select * from le_system_resource 
+		<where>
+			<if test="parentId !=null"> parent_id=#{parentId}</if>
+			<if test="type !=null"> and type=#{type}</if>
+			<if test="resourceName !=null"> and instr(resource_name,#{resourceName})>0</if>
+			<if test="url !=null"> and instr(url,#{url})>0</if>
+		</where>
+	</select>
+	
+	<select id="listUserPerm" parameterType="String" resultType="String">
+		select re.perms from le_system_resource re 
+			left join le_role_resource rore on re.id=rore.resource_id
+			left join le_user_authorization au on au.role_id=rore.role_id
+			left join le_system_user user on user.user_account=au.user_account
+		where user.user_account=#{userAccount}
+	</select>
+	
+</mapper>

@@ -17,12 +17,20 @@ import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ascend.demo.auth.domain.SystemUserDO;
+import com.ascend.demo.auth.service.SystemResourceService;
+import com.ascend.demo.auth.service.SystemRoleService;
 import com.ascend.demo.auth.service.SystemUserService;
 
 public class ShiroRealm extends AuthorizingRealm{
 
 	@Autowired
 	private SystemUserService userService;
+	
+	@Autowired
+	private SystemResourceService reService;
+	
+	@Autowired
+	private SystemRoleService roleService;
 	
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
@@ -33,11 +41,10 @@ public class ShiroRealm extends AuthorizingRealm{
 		
 		Set<String> roles=new HashSet<>();
 		//以下数据可以从数据库中获取
-		roles.add("user");
-		if("user1".equals(principal.getUserAccount())){
-			roles.add("admin");
-		}
+		roles.add(roleService.getById("1").getRoleCode());
 		SimpleAuthorizationInfo info=new SimpleAuthorizationInfo(roles);	
+		Set<String> perms=reService.listUserPerm(principal.getUserAccount());
+		info.setStringPermissions(perms);
 		return info;
 	}
 

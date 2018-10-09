@@ -13,8 +13,6 @@ import javax.xml.bind.DatatypeConverter;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
-import org.jsoup.select.Evaluator.IsEmpty;
-
 /** 
  *
  * @ClassName: DateUtil 

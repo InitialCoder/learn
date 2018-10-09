@@ -4,6 +4,11 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 人
+ * @author wu
+ *
+ */
 public class SystemUserDO implements Serializable{
 
 	/**
@@ -12,17 +17,30 @@ public class SystemUserDO implements Serializable{
 	private static final long serialVersionUID = 5111583159334490155L;
 
 	private String id;
-	
+	/**
+	 * 用户编码：唯一
+	 */
 	private String userAccount;
-	
+	/**
+	 * 姓名
+	 */
 	private String userName;
-	
+	/**
+	 * 密码
+	 */
 	private String password;
-	
+	/**
+	 * 年龄
+	 */
 	private int age;
 	
+	/**
+	 * 性别
+	 */
 	private String sex;
-	
+	/**
+	 * 邮箱
+	 */
 	private String email;
 	
 	private Date createTime;
@@ -32,8 +50,6 @@ public class SystemUserDO implements Serializable{
 	private String modifyCode;
 	
 	private Date modifyTime;
-	
-	private OneToOneDO one;
 	
 	private List<SystemAuthorizationDO> auths; 
 
@@ -125,14 +141,6 @@ public class SystemUserDO implements Serializable{
 		this.modifyTime = modifyTime;
 	}
 
-	public OneToOneDO getOne() {
-		return one;
-	}
-
-	public void setOne(OneToOneDO one) {
-		this.one = one;
-	}
-	
 	public List<SystemAuthorizationDO> getAuths() {
 		return auths;
 	}
@@ -143,7 +151,7 @@ public class SystemUserDO implements Serializable{
 
 	@Override
 	public String toString() {
-		return "SystemUserDO [id=" + id + ", userAccount=" + userAccount +  ", one=" + one + ", auths=" + auths
+		return "SystemUserDO [id=" + id + ", userAccount=" + userAccount +  ", auths=" + auths
 				+ "]";
 	}
 

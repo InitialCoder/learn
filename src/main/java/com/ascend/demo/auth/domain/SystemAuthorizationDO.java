@@ -1,12 +1,17 @@
 package com.ascend.demo.auth.domain;
 
+/**
+ * 用户--角色中间表
+ * @author wu
+ *
+ */
 public class SystemAuthorizationDO {
 
 	private String id;
 	
 	private String userAccount;
 	
-	private String roleCode;
+	private String roleId;
 	
 	private String authArea;
 	
@@ -28,14 +33,6 @@ public class SystemAuthorizationDO {
 		this.userAccount = userAccount;
 	}
 
-	public String getRoleCode() {
-		return roleCode;
-	}
-
-	public void setRoleCode(String roleCode) {
-		this.roleCode = roleCode;
-	}
-
 	public String getAuthArea() {
 		return authArea;
 	}
@@ -54,7 +51,7 @@ public class SystemAuthorizationDO {
 
 	@Override
 	public String toString() {
-		return "SystemAuthorizationDO [id=" + id + ", userAccount=" + userAccount + ", roleCode=" + roleCode + "]";
+		return "SystemAuthorizationDO [id=" + id + ", userAccount=" + userAccount + ", roleCode=" + roleId + "]";
 	}
 	
 	

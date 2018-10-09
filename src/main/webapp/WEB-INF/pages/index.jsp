@@ -44,13 +44,13 @@
 </shiro:principal>
 
 </div>
-<shiro:hasRole name="admin">
+<shiro:hasRole name="ADMIN">
 	<a href="${ctx}/home/admin.action">admin.jsp</a>
 </shiro:hasRole>
-<shiro:hasRole name="user">
+<shiro:hasPermission name="home:user">
 	<a href="${ctx}/home/user.action">user.jsp</a>
-</shiro:hasRole>
-<shiro:
+</shiro:hasPermission>
+	<a href="${ctx }/home/list.action">list</a>
 </div>
 <script type="text/javascript">
 	$(function(){
