@@ -33,7 +33,7 @@
 	<br>
 	<br>
 	<br>
-	<form action="${ctx}/login/logout" >
+	<form action="${ctx}/logout" >
 		<div>
 			<button type="submit"> logout</button>	
 		</div>
@@ -50,7 +50,9 @@
 <shiro:hasPermission name="home:user">
 	<a href="${ctx}/home/user.action">user.jsp</a>
 </shiro:hasPermission>
+<shiro:hasPermission name="home:findAll">
 	<a href="${ctx }/home/list.action">list</a>
+</shiro:hasPermission>
 </div>
 <script type="text/javascript">
 	$(function(){

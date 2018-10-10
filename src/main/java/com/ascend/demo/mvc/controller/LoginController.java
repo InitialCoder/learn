@@ -6,60 +6,66 @@ import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.ascend.demo.ext.util.R;
+import com.ascend.demo.ext.util.ShiroUtils;
 
 @Controller
-@RequestMapping("/login")
 public class LoginController {
 
 	private Logger log=LoggerFactory.getLogger(LoginController.class);
 	
-	@RequestMapping({"/","login","login.action","index.action"})
+	@GetMapping({"/","login","login.action","index.action"})
 	public String login(){ 
 	
 		return "login";
 	
 	}
 	
-	@RequestMapping({"/shirologin.action"})
+	@PostMapping({"/login"})
 	public String shiroLogin(@RequestParam String userAccount, @RequestParam String password){
 		
 		Subject currentUser=SecurityUtils.getSubject();
+			
+		UsernamePasswordToken token=new UsernamePasswordToken(userAccount,password);
+		token.setRememberMe(true);
 		
-		if(!currentUser.isAuthenticated()){
-			
-			UsernamePasswordToken token=new UsernamePasswordToken(userAccount,password);
-			
-			token.setRememberMe(true);
-			
-			try{
-				currentUser.login(token);
-			}catch (UnknownAccountException uae) {
-				log.info("There is no user with the AccountName "+token.getPrincipal());
-				return "login";
-			}catch(IncorrectCredentialsException ice ){
-				log.info("The password of "+token.getPrincipal() +" is incorrect");
-				return "login";
-			}catch(LockedAccountException lae){
-				log.info("The account for username "+token.getPrincipal()+" is locked. Please contact you administrator to unlock it");
-				return "login";
-			}catch(AuthenticationException ae){
-				log.info("Authentication Exception");
-				return "login";
-			}catch(Exception e){
-				log.info(e.getMessage());
-				return "login";
-			}
+		try{
+			currentUser.login(token);
+			return "redirect:home/index";
+		}catch(Exception e){
+			log.info(e.getMessage());
+			return "login";
 		}
 		
-		return "redirect:/home/index.action";
-		
+		/*catch (UnknownAccountException uae) {
+			log.info("There is no user with the AccountName "+token.getPrincipal());
+			return R.error("There is no user with the AccountName");
+		}catch(IncorrectCredentialsException ice ){
+			log.info("The password of "+token.getPrincipal() +" is incorrect");
+			return R.error("There is no user with the AccountName");
+		}catch(LockedAccountException lae){
+			log.info("The account for username "+token.getPrincipal()+" is locked. Please contact you administrator to unlock it");
+		}catch(AuthenticationException ae){
+			log.info("Authentication Exception");
+		}catch(Exception e){
+			log.info(e.getMessage());
+		}*/
+	}
+
+	
+	@GetMapping("/logout")
+	String logout() {
+		ShiroUtils.logout();
+		return "redirect:/login";
 	}
 
 }

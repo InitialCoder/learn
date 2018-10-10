@@ -10,7 +10,7 @@
 <body>
 
 <div>登录</div>
-<form action="${ctx }/login/shirologin.action" method="POST" >
+<form action="${ctx }/login" method="POST" >
 	<div>
 		<input name="userAccount" type="text">
 	</div>
