@@ -8,8 +8,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.ascend.demo.Application;
-import com.ascend.demo.auth.domain.SystemUserDO;
-import com.ascend.demo.auth.service.SystemUserService;
+import com.ascend.demo.common.domain.UserDO;
+import com.ascend.demo.mgr.auth.service.UserService;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes=Application.class)
@@ -17,7 +17,7 @@ import com.ascend.demo.auth.service.SystemUserService;
 public class TestMybatis {
 
 	@Autowired
-	private SystemUserService service;
+	private UserService service;
 	
 //	@Test
 //	public void test1(){
@@ -70,7 +70,7 @@ public class TestMybatis {
 		
 		//one to one
 		
-		SystemUserDO dos=service.findOneToOne("124");
+		UserDO dos=service.findOneToOne("124");
 		System.out.println("-----------=====================");
 		System.out.println(dos);
 	}

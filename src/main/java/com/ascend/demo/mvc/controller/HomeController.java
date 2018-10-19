@@ -11,8 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.ascend.demo.auth.domain.SystemUserDO;
-import com.ascend.demo.auth.service.SystemUserService;
+import com.ascend.demo.common.domain.UserDO;
+import com.ascend.demo.mgr.auth.service.UserService;
 import com.ascend.demo.mvc.model.ResultInfo;
 
 @Controller
@@ -20,7 +20,7 @@ import com.ascend.demo.mvc.model.ResultInfo;
 public class HomeController {
 
 	@Autowired
-	private SystemUserService service;
+	private UserService service;
 	
 	@RequestMapping({"index","/index.action"})
 	public String index(){
@@ -41,9 +41,9 @@ public class HomeController {
 	
 	@RequestMapping("/get1.json")
 	@ResponseBody
-	public SystemUserDO get1(){
+	public UserDO get1(){
 
-		SystemUserDO pojo=new SystemUserDO();
+		UserDO pojo=new UserDO();
 		pojo.setAge(16+1);
 		pojo.setCreateCode("wu"+1);
 		pojo.setEmail("11111@qq.com"+1);
@@ -60,10 +60,10 @@ public class HomeController {
 	@RequestMapping("/get2.json")
 	@ResponseBody
 	public int get2(){
-		List<SystemUserDO> list=new ArrayList<SystemUserDO>();
-		SystemUserDO pojo;
+		List<UserDO> list=new ArrayList<UserDO>();
+		UserDO pojo;
 		for(int i=0;i<10;i++){
-			pojo=new SystemUserDO();
+			pojo=new UserDO();
 			pojo.setAge(16);
 			pojo.setCreateCode("wu");
 			pojo.setEmail("11111@qq.com");
@@ -83,7 +83,7 @@ public class HomeController {
 	@RequestMapping("udpate1.json")
 	@ResponseBody
 	public int update1(){
-		SystemUserDO user=service.getById("123");
+		UserDO user=service.getById("123");
 		user.setAge(100);
 		user.setModifyCode("galigey");
 		return service.update(user);
@@ -92,9 +92,9 @@ public class HomeController {
 	@RequestMapping("udpate2.json")
 	@ResponseBody
 	public int update2(){
-		List<SystemUserDO> user=service.findAll();
-		List<SystemUserDO> tem=new ArrayList<SystemUserDO>();
-		SystemUserDO entity;
+		List<UserDO> user=service.findAll();
+		List<UserDO> tem=new ArrayList<UserDO>();
+		UserDO entity;
 		for (int i=0;i<2;i++) {
 			entity=user.get(i);
 			entity.setAge(entity.getAge()+1);
@@ -108,7 +108,7 @@ public class HomeController {
 	@RequestMapping("findAll.json")
 	@ResponseBody
 	@RequiresPermissions(value={"home:findAll"})
-	public List<SystemUserDO> findAll(){
+	public List<UserDO> findAll(){
 		return service.findAll();
 		
 	}

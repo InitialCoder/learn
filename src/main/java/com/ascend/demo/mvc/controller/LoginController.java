@@ -1,10 +1,6 @@
 package com.ascend.demo.mvc.controller;
 
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.IncorrectCredentialsException;
-import org.apache.shiro.authc.LockedAccountException;
-import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
@@ -13,10 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.ascend.demo.ext.util.R;
-import com.ascend.demo.ext.util.ShiroUtils;
+import com.ascend.demo.common.ext.util.ShiroUtils;
 
 @Controller
 public class LoginController {
@@ -33,10 +27,13 @@ public class LoginController {
 	@PostMapping({"/login"})
 	public String shiroLogin(@RequestParam String userAccount, @RequestParam String password){
 		
+		/**
+		 * 获取当前用户
+		 */
 		Subject currentUser=SecurityUtils.getSubject();
 			
 		UsernamePasswordToken token=new UsernamePasswordToken(userAccount,password);
-		token.setRememberMe(true);
+		token.setRememberMe(false);
 		
 		try{
 			currentUser.login(token);

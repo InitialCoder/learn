@@ -51,8 +51,9 @@
 	<a href="${ctx}/home/user.action">user.jsp</a>
 </shiro:hasPermission>
 <shiro:hasPermission name="home:findAll">
-	<a href="${ctx }/home/list.action">list</a>
+	<a href="${ctx }/home/list.action">list  permiss</a>
 </shiro:hasPermission>
+	<a href="${ctx }/home/list.action">list</a>
 </div>
 <script type="text/javascript">
 	$(function(){

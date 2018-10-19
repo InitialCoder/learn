@@ -8,12 +8,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.ascend.demo.Application;
-import com.ascend.demo.auth.domain.SystemAuthorizationDO;
-import com.ascend.demo.auth.domain.SystemRoleDO;
-import com.ascend.demo.auth.domain.SystemUserDO;
-import com.ascend.demo.auth.service.SystemAuthorizationService;
-import com.ascend.demo.auth.service.SystemRoleService;
-import com.ascend.demo.auth.service.SystemUserService;
+import com.ascend.demo.common.domain.UserDO;
+import com.ascend.demo.mgr.auth.service.AuthorizationService;
+import com.ascend.demo.mgr.auth.service.RoleService;
+import com.ascend.demo.mgr.auth.service.UserService;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes=Application.class)
@@ -21,13 +19,13 @@ import com.ascend.demo.auth.service.SystemUserService;
 public class DemoTest {
 
 	@Autowired
-	private SystemUserService service;
+	private UserService service;
 	
 	@Autowired
-	private SystemRoleService roleService;
+	private RoleService roleService;
 	
 	@Autowired
-	private SystemAuthorizationService authService;
+	private AuthorizationService authService;
 	
 	@Test
 	public void addRole(){
@@ -46,7 +44,7 @@ public class DemoTest {
 		roleService.saveOne(role);*/
 		 
 		
-		SystemUserDO entity= service.getById("123");
+		UserDO entity= service.getById("123");
 		System.out.println(entity);
 		
 	}
