@@ -2,23 +2,15 @@ package com.ascend.demo.mgr.auth.dao;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Mapper;
-
 import com.ascend.demo.common.domain.ResourceDO;
 import com.ascend.demo.mgr.auth.condition.ResourceCondition;
 
-@Mapper
-public interface ResourceDao {
+import tk.mybatis.mapper.common.Mapper;
 
-	ResourceDO getById(String id);
-	
-	int saveOne(ResourceDO pojo);
-	
-	int update(ResourceDO pojo);
+public interface ResourceDao extends Mapper<ResourceDO>{
+
 	
 	List<ResourceDO> findByParentId(String parentId);
-	
-	int deleteById(String id);
 	
 	List<ResourceDO> findByWhere(ResourceCondition dto);
 

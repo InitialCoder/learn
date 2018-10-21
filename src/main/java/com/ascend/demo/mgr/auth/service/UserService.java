@@ -23,5 +23,4 @@ public interface UserService {
 	
 	List<UserDO> findByWhere(UserCondition dto);
 	
-	UserDO findOneToOne(String id);
 }

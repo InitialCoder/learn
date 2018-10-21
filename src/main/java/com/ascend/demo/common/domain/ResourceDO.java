@@ -1,13 +1,20 @@
 package com.ascend.demo.common.domain;
 
+import javax.persistence.Table;
+
 /**
  * 资源管理实体类
  * @author wu
  *
  */
-public class ResourceDO {
+@Table(name="demo_resource")
+public class ResourceDO extends BaseEntity{
 	
-	private String id;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2893717117311693828L;
+
 	
 	/**
 	 * 父类id
@@ -37,14 +44,6 @@ public class ResourceDO {
 	private String modifyCode;
 	
 	private String modifyTime;
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public String getParentId() {
 		return parentId;

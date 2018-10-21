@@ -1,11 +1,14 @@
 package com.ascend.demo.common.domain;
 
+import javax.persistence.Table;
+
 /**
  * 用户--角色中间表
  * @author wu
  *
  */
-public class AuthorizationDO {
+@Table(name="user_role")
+public class UserRoleDO {
 
 	private String id;
 	

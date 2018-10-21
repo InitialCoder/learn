@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.ascend.demo.Application;
 import com.ascend.demo.common.domain.UserDO;
-import com.ascend.demo.mgr.auth.service.AuthorizationService;
+import com.ascend.demo.mgr.auth.service.UserRoleService;
 import com.ascend.demo.mgr.auth.service.RoleService;
 import com.ascend.demo.mgr.auth.service.UserService;
 
@@ -25,7 +25,7 @@ public class DemoTest {
 	private RoleService roleService;
 	
 	@Autowired
-	private AuthorizationService authService;
+	private UserRoleService authService;
 	
 	@Test
 	public void addRole(){

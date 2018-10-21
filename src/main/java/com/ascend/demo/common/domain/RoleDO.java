@@ -1,13 +1,20 @@
 package com.ascend.demo.common.domain;
 
+import javax.persistence.Table;
+
 /**
  * 系统角色
  * @author wu
  *
  */
-public class RoleDO {
+@Table(name="demo_role")
+public class RoleDO extends BaseEntity{
 
-	private String id;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5670994868165585222L;
+	
 	/**
 	 * 角色编码
 	 */
@@ -29,13 +36,6 @@ public class RoleDO {
 	 */
 	private String state;
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public String getRoleCode() {
 		return roleCode;

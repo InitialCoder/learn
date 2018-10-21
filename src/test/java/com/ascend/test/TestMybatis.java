@@ -70,8 +70,6 @@ public class TestMybatis {
 		
 		//one to one
 		
-		UserDO dos=service.findOneToOne("124");
 		System.out.println("-----------=====================");
-		System.out.println(dos);
 	}
 }

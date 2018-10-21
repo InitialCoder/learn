@@ -1,13 +1,21 @@
 package com.ascend.demo.common.domain;
+
+import javax.persistence.Table;
+
 /**
  * 角色-资源中间表：权限控制表
  * @author wu
  *
  */
-public class RoleResourceDO {
+@Table(name="demo_role_resource")
+public class RoleResourceDO extends BaseEntity{
 	
-	private String id;
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2355590231475980173L;
+
 	/**
 	 * 角色id
 	 */
@@ -17,14 +25,6 @@ public class RoleResourceDO {
 	 * 资源id
 	 */
 	private String resourceId;
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public String getRoleId() {
 		return roleId;

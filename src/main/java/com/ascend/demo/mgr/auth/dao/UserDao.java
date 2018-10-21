@@ -2,28 +2,21 @@ package com.ascend.demo.mgr.auth.dao;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Mapper;
-
 import com.ascend.demo.common.domain.UserDO;
 import com.ascend.demo.mgr.auth.condition.UserCondition;
 
-@Mapper
-public interface UserDao {
+import tk.mybatis.mapper.common.Mapper;
 
-	UserDO getById(String value);
+public interface UserDao extends Mapper<UserDO>{
 	
-	int saveOne(UserDO pojo);
 	int saveList(List<UserDO> pojos);
-	int update(UserDO pojo);
+	
 	int updateList(List<UserDO> pojos);
 	
 	List<UserDO> findByUserAccount(String userAccount);
 	
-	List<UserDO> findAll();
-	
 	List<UserDO> findByWhere(UserCondition dto);
 	
-	UserDO oneToOneselect(String leId);
 }
 
 
