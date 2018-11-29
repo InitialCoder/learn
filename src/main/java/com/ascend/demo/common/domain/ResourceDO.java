@@ -1,15 +1,16 @@
 package com.ascend.demo.common.domain;
 
-import javax.persistence.Table;
+import com.baomidou.mybatisplus.annotation.TableName;
 
 /**
  * 资源管理实体类
  * @author wu
  *
  */
-@Table(name="demo_resource")
-public class ResourceDO extends BaseEntity{
+@TableName(value="demo_resource")
+public class ResourceDO {
 	
+	private String id;
 	/**
 	 * 
 	 */
@@ -44,6 +45,15 @@ public class ResourceDO extends BaseEntity{
 	private String modifyCode;
 	
 	private String modifyTime;
+
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public String getParentId() {
 		return parentId;

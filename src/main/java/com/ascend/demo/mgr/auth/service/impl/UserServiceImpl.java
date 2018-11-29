@@ -3,6 +3,7 @@ package com.ascend.demo.mgr.auth.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,7 +22,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserDO getById(String id) {
 		
-		return userDao.selectByPrimaryKey(id);
+		return userDao.selectById(id);
 	}
 
 	@Override
@@ -41,7 +42,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	@Transactional
 	public int update(UserDO pojo) {
-		return userDao.updateByPrimaryKeySelective(pojo);
+		return userDao.updateById(pojo);
 	}
 	
 	@Override
@@ -53,7 +54,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<UserDO> findAll() {
 		
-		return userDao.selectAll();
+		return userDao.selectList(null);
 	}
 
 	@Override
@@ -63,6 +64,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	@Cacheable("userDO")
 	public UserDO findByUserAccount(String userAccount) {
 		List<UserDO> list=userDao.findByUserAccount(userAccount);
 		if(!list.isEmpty()){

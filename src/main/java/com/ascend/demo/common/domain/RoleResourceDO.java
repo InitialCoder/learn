@@ -1,14 +1,14 @@
 package com.ascend.demo.common.domain;
 
-import javax.persistence.Table;
+import com.baomidou.mybatisplus.annotation.TableName;
 
 /**
  * 角色-资源中间表：权限控制表
  * @author wu
  *
  */
-@Table(name="demo_role_resource")
-public class RoleResourceDO extends BaseEntity{
+@TableName(value="demo_role_resource")
+public class RoleResourceDO{
 	
 	
 	/**
@@ -16,6 +16,7 @@ public class RoleResourceDO extends BaseEntity{
 	 */
 	private static final long serialVersionUID = -2355590231475980173L;
 
+	private String id;
 	/**
 	 * 角色id
 	 */
@@ -25,6 +26,15 @@ public class RoleResourceDO extends BaseEntity{
 	 * 资源id
 	 */
 	private String resourceId;
+
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public String getRoleId() {
 		return roleId;

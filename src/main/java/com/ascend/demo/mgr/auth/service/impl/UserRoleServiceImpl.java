@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ascend.demo.common.domain.UserRoleDO;
-import com.ascend.demo.mgr.auth.condition.AuthorizationCondition;
+import com.ascend.demo.mgr.auth.condition.UserRoleCondition;
 import com.ascend.demo.mgr.auth.dao.UserRoleDao;
 import com.ascend.demo.mgr.auth.service.UserRoleService;
 
@@ -22,7 +22,7 @@ public class UserRoleServiceImpl implements UserRoleService {
 	@Override
 	@Transactional
 	public void saveOne(UserRoleDO pojo) {
-		authDao.saveOne(pojo);
+		authDao.insert(pojo);
 	}
 
 	@Override
@@ -32,7 +32,7 @@ public class UserRoleServiceImpl implements UserRoleService {
 
 	@Override
 	public UserRoleDO getById(String id) {
-		return authDao.getById(id);
+		return authDao.selectById(id);
 	}
 
 	@Override
@@ -43,12 +43,12 @@ public class UserRoleServiceImpl implements UserRoleService {
 
 	@Override
 	public List<UserRoleDO> findAll() {
-		return authDao.findAll();
+		return authDao.selectList(null);
 	}
 
 	@Override
-	public List<UserRoleDO> findByWhere(AuthorizationCondition dto) {
-		return authDao.findByWhere(dto);
+	public List<UserRoleDO> findByWhere(UserRoleCondition condition) {
+		return authDao.findByWhere(condition);
 	}
 	
 }

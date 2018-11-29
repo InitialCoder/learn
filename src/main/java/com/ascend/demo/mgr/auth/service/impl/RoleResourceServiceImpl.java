@@ -20,13 +20,13 @@ public class RoleResourceServiceImpl implements RoleResourceService {
 	
 	@Override
 	public RoleResourceDO getById(String id) {
-		return roleResourcedao.selectByPrimaryKey(id);
+		return roleResourcedao.selectById(id);
 	}
 
 	@Override
 	@Transactional
 	public int save(RoleResourceDO pojo) {
-		return roleResourcedao.insertSelective(pojo);
+		return roleResourcedao.insert(pojo);
 	}
 
 	@Override
@@ -38,13 +38,13 @@ public class RoleResourceServiceImpl implements RoleResourceService {
 	@Override
 	@Transactional
 	public int update(RoleResourceDO pojo) {
-		return roleResourcedao.updateByPrimaryKeySelective(pojo);
+		return roleResourcedao.updateById(pojo);
 	}
 
 	@Override
 	@Transactional
 	public int deleteById(String id) {
-		return roleResourcedao.deleteByPrimaryKey(id);
+		return roleResourcedao.deleteById(id);
 	}
 
 	@Override

@@ -1,20 +1,25 @@
 package com.ascend.demo.common.domain;
 
-import javax.persistence.Table;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 
 /**
  * 系统角色
  * @author wu
  *
  */
-@Table(name="demo_role")
-public class RoleDO extends BaseEntity{
+@TableName(value="demo_role")
+public class RoleDO{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -5670994868165585222L;
 	
+	//input 类型要自己输入，例如分布式id是使用redis生成可以使用此类型
+	@TableId(type=IdType.AUTO)//使用数据库默认增加
+	private String id;
 	/**
 	 * 角色编码
 	 */
@@ -36,6 +41,14 @@ public class RoleDO extends BaseEntity{
 	 */
 	private String state;
 
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public String getRoleCode() {
 		return roleCode;

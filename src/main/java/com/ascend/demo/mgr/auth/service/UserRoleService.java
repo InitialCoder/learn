@@ -3,7 +3,7 @@ package com.ascend.demo.mgr.auth.service;
 import java.util.List;
 
 import com.ascend.demo.common.domain.UserRoleDO;
-import com.ascend.demo.mgr.auth.condition.AuthorizationCondition;
+import com.ascend.demo.mgr.auth.condition.UserRoleCondition;
 
 public interface UserRoleService {
 
@@ -17,5 +17,5 @@ public interface UserRoleService {
 	
 	List<UserRoleDO> findAll();
 	
-	List<UserRoleDO> findByWhere(AuthorizationCondition dto);
+	List<UserRoleDO> findByWhere(UserRoleCondition condition);
 }

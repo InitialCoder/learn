@@ -30,8 +30,8 @@ import com.ascend.demo.security.shiro.ShiroRealm;
 @Configuration
 public class ShiroConfiguration {
 
-	@Value("${cacheType}")
-    private String cacheType;
+	/*@Value("${cacheType}")
+    private String cacheType;*/
 	  //将自己的验证方式加入容器
 	/**
 	 * 主要realm

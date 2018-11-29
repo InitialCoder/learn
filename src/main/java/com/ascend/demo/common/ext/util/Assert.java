@@ -74,4 +74,20 @@ public class Assert {
 		}
 		return false;
 	}
+	
+	/**
+	 * 两个对象是否相等 主要防止null对象的出现，减少代码量
+	 * 
+	 * @param value1
+	 * @param value2
+	 * @return boolean
+	 */
+	public static boolean isEqual(Object value1, Object value2) {
+		if(null==value1||null==value2){
+			return value1==value2;
+		}else{
+			return value1.equals(value2);
+		}
+	}
+	
 }

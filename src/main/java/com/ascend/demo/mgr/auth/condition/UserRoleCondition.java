@@ -1,6 +1,6 @@
 package com.ascend.demo.mgr.auth.condition;
 
-public class AuthorizationCondition {
+public class UserRoleCondition {
 
 	private String userAccount;
 	

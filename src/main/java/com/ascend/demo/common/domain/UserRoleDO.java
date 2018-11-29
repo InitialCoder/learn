@@ -1,15 +1,16 @@
 package com.ascend.demo.common.domain;
 
-import javax.persistence.Table;
+import com.baomidou.mybatisplus.annotation.TableName;
 
 /**
  * 用户--角色中间表
  * @author wu
  *
  */
-@Table(name="user_role")
+@TableName(value="demo_user_role")
 public class UserRoleDO {
 
+	
 	private String id;
 	
 	private String userAccount;

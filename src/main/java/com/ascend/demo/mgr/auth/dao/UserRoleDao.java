@@ -5,21 +5,14 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.ascend.demo.common.domain.UserRoleDO;
-import com.ascend.demo.mgr.auth.condition.AuthorizationCondition;
+import com.ascend.demo.mgr.auth.condition.UserRoleCondition;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 @Mapper
-public interface UserRoleDao {
-
-	int saveOne(UserRoleDO pojo);
+public interface UserRoleDao extends BaseMapper<UserRoleDO>{
 	
 	List<UserRoleDO> getByUserAccont(String userAccount);
 	
-	UserRoleDO getById(String id);
-	
-	int deleteById(String id);
-	
-	List<UserRoleDO> findAll();
-	
-	List<UserRoleDO> findByWhere(AuthorizationCondition dto);
+	List<UserRoleDO> findByWhere(UserRoleCondition condition);
 	
 }

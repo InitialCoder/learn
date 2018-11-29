@@ -1,23 +1,25 @@
 package com.ascend.demo.common.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Table;
+import com.baomidou.mybatisplus.annotation.TableName;
 
 /**
  * 人
  * @author wu
  *
  */
-@Table(name="demo_user")
-public class UserDO extends BaseEntity{
+@TableName(value="demo_user")
+public class UserDO implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 5111583159334490155L;
 
+	private String id;
 	/**
 	 * 用户编码：唯一
 	 */
@@ -53,6 +55,14 @@ public class UserDO extends BaseEntity{
 	private Date modifyTime;
 	
 	private List<UserRoleDO> auths; 
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public String getUserAccount() {
 		return userAccount;

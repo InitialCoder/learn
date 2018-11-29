@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ascend.demo.mgr.auth.dao.ResourceDao" >
+	 
+	<select id="getByUrl" parameterType="String" resultType="com.ascend.demo.common.domain.ResourceDO">
+		select * from demo_resource where url=#{url}
+	</select>
+	
+	<select id="findByParentId" parameterType="String" resultType="com.ascend.demo.common.domain.ResourceDO">
+		select * from from demo_resource where parent_id=#{parentId}
+	</select>
+	
+	<select id="findByWhere" parameterType="com.ascend.demo.mgr.auth.condition.ResourceCondition" resultType="com.ascend.demo.common.domain.ResourceDO">
+		select * from demo_resource 
+		<where>
+			<if test="parentId !=null"> parent_id=#{parentId}</if>
+			<if test="type !=null"> and type=#{type}</if>
+			<if test="resourceName !=null"> and instr(resource_name,#{resourceName})>0</if>
+			<if test="url !=null"> and instr(url,#{url})>0</if>
+		</where>
+	</select>
+	
+	<select id="listUserPerm" parameterType="String" resultType="String">
+		select re.perms from demo_resource re 
+			left join demo_role_resource rore on re.id=rore.resource_id
+			left join demo_user_role au on au.role_id=rore.role_id
+			left join demo_user user on user.user_account=au.user_account
+		where user.user_account=#{userAccount}
+	</select>
+	
+	<select id="listRolePerm" parameterType="String" resultType="String">
+		select re.perms from demo_resource re 
+			left join demo_role_resource rore on re.id=rore.resource_id
+			left join demo_role role on role.id=rore.role_id
+		where role.role_code=#{roleCode}
+	</select>
+	
+</mapper>

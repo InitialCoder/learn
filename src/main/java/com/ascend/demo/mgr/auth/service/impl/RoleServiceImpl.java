@@ -19,30 +19,30 @@ public class RoleServiceImpl implements RoleService {
 	
 	@Override
 	public RoleDO getById(String id) {
-		return roleDao.selectByPrimaryKey(id);
+		return roleDao.selectById(id);
 	}
 
 	@Override
 	@Transactional
 	public int saveOne(RoleDO pojo) {
-		return roleDao.insertSelective(pojo);
+		return roleDao.insert(pojo);
 	}
 
 	@Override
 	@Transactional
 	public int update(RoleDO pojo) {
-		return roleDao.updateByPrimaryKeySelective(pojo);
+		return roleDao.updateById(pojo);
 	}
 
 	@Override
 	public List<RoleDO> findAll() {
-		return roleDao.selectAll();
+		return roleDao.selectList(null);
 	}
 
 	@Override
 	@Transactional
 	public int deleteById(String id) {
-		return roleDao.deleteByPrimaryKey(id);
+		return roleDao.deleteById(id);
 	}
 	
 }

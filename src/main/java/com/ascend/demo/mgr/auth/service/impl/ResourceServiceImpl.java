@@ -30,19 +30,19 @@ public class ResourceServiceImpl implements ResourceService {
 	@Override
 	public ResourceDO getById(String id) {
 		 
-		return resourceDao.selectByPrimaryKey(id);
+		return resourceDao.selectById(id);
 	}
 
 	@Override
 	@Transactional
 	public int save(ResourceDO pojo) {
-		return resourceDao.insertSelective(pojo);
+		return resourceDao.insert(pojo);
 	}
 
 	@Override
 	@Transactional
 	public int update(ResourceDO pojo) {
-		return resourceDao.updateByPrimaryKeySelective(pojo);
+		return resourceDao.updateById(pojo);
 	}
 
 	@Override
@@ -54,7 +54,7 @@ public class ResourceServiceImpl implements ResourceService {
 	@Override
 	@Transactional
 	public int deleteById(String id) {
-		return resourceDao.deleteByPrimaryKey(id);
+		return resourceDao.deleteById(id);
 	}
 
 	@Override

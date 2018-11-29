@@ -2,12 +2,14 @@ package com.ascend.demo.mgr.auth.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
+
 import com.ascend.demo.common.domain.ResourceDO;
 import com.ascend.demo.mgr.auth.condition.ResourceCondition;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
-import tk.mybatis.mapper.common.Mapper;
-
-public interface ResourceDao extends Mapper<ResourceDO>{
+@Mapper
+public interface ResourceDao extends BaseMapper<ResourceDO>{
 
 	
 	List<ResourceDO> findByParentId(String parentId);

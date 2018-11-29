@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ascend.demo.mgr.auth.dao.UserDao" >
+	<insert id="saveList" parameterType="List" useGeneratedKeys="true" keyProperty="id">
+		insert into demo_user(
+			`user_account`,
+			`user_name`,
+			`password`,
+			`age`,
+			`sex`,
+			`email`,
+			`create_time`,
+			`create_code`,
+			`modify_time`,
+			`modify_code`,
+		)values
+		<foreach collection="list" item="item" index="index" separator=",">
+			(#{item.userAccount},
+			#{item.userName},
+			#{item.password},
+			#{item.age},
+			#{item.sex},
+			#{item.email},
+			#{item.createTime},
+			#{item.createCode},
+			#{item.modifyTime},
+			#{item.modifyCode},
+			)
+		</foreach>
+	</insert>
+
+	<select id="findByUserAccount" parameterType="String" resultType="com.ascend.demo.common.domain.UserDO">
+		select * from demo_user where user_account=#{userAccount}
+	</select>
+	
+	<select id="findAll" resultType="com.ascend.demo.common.domain.UserDO">
+		elect * from demo_user 
+	</select>
+	
+	<!--  批量多条数据一起更新 -->
+	<update id="updateList" parameterType="List">
+			update demo_user
+				<trim prefix="set" suffixOverrides=",">
+					<trim prefix="user_account=case" suffix="end,">
+						<foreach collection="list" item="i" index="index">
+							<if test="i.id!=null">
+						        when id=#{i.id} then #{i.userAccount}
+							</if> 
+						</foreach>
+					</trim>
+					<trim prefix="user_name=case" suffix="end,">
+						<foreach collection="list" item="i" index="index" >
+							<if test="i.id!=null">
+							   when id=#{i.id} then #{i.userName}
+							</if>
+						</foreach>
+					</trim>
+					<trim prefix="password=case" suffix="end,">
+						<foreach collection="list" item="i" index="index" >
+							<if test="i.id!=null">
+							   when id=#{i.id} then #{i.password}
+							</if>
+						</foreach>
+					</trim>
+					<trim prefix="age=case" suffix="end,">
+						<foreach collection="list" item="i" index="index" >
+							<if test="i.id!=null">
+							   when id=#{i.id} then #{i.age}
+							</if>
+						</foreach>
+					</trim>
+					<trim prefix="sex=case" suffix="end,">
+						<foreach collection="list" item="i" index="index" >
+							<if test="i.id!=null">
+							     when id=#{i.id} then #{i.sex} 
+							</if>
+						</foreach>
+					</trim>
+					<trim prefix="email=case" suffix="end,">
+						<foreach collection="list" item="i" index="index" >
+							<if test="i.id!=null">
+							    when id=#{i.id} then #{i.email} 
+							</if>
+						</foreach>
+					</trim>
+					<trim prefix="modify_time=case" suffix="end,">
+						<foreach collection="list" item="i" index="index" >
+							<if test="i.id!=null">
+							    when id=#{i.id} then #{i.modifyTime} 
+							</if>
+						</foreach>
+					</trim>
+					<trim prefix="modify_code=case" suffix="end,">
+						<foreach collection="list" item="i" index="index">
+							<if test="i.id!=null">
+							   when id=#{i.id} then #{i.modifyCode} 
+							</if>
+						</foreach>
+					</trim>
+				</trim>
+				where 
+				<foreach collection="list" separator="or" item="i" index="index">
+				     id=#{i.id} 
+				</foreach>
+	</update>
+	
+	<select id="findByWhere" parameterType="com.ascend.demo.mgr.auth.condition.UserCondition" resultType="com.ascend.demo.common.domain.UserDO">
+		select 
+			`user_account`,
+			`user_name`,
+			`password`,
+			`age`,
+			`sex`,
+			`email`,
+			`create_time`,
+			`create_code`,
+			`modify_time`,
+			`modify_code` ,
+		from demo_user where 1=1
+		<if test="userAccount!=null and userAccount!=''">and (instr(user_account,#{userAccount})>0 or instr(user_name,#{userAccount})>0) </if>
+		<if test="age!=null and age!=''">and age=#{age} </if>
+		<if test="createCode!=null and createCode!=''">and instr(create_code,#{createCode})>0</if>
+		<if test="modifyCode!=null and modifyCode!=''">and instr(modify_code,#{modifyCode})>0</if>
+		<if test="modifyTime!=null and modifyTime!=''">and modify_time=#{modifyTime}</if>
+		
+	</select>
+	
+</mapper>
