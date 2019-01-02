@@ -1,4 +1,4 @@
-package com.ascend.test;
+/*package com.ascend.test;
 
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.util.ByteSource;
@@ -13,3 +13,4 @@ public class OtherTest {
 		System.out.println(result);
 	}
 }
+*/

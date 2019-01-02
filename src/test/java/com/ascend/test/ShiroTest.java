@@ -1,4 +1,4 @@
-package com.ascend.test;
+/*package com.ascend.test;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -84,3 +84,4 @@ public class ShiroTest {
         currentUser.logout();
 	}
 }
+*/

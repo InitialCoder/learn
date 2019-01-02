@@ -1,4 +1,4 @@
-package com.ascend.demo.common.ext.util;
+/*package com.ascend.demo.common.ext.util;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -58,13 +58,13 @@ public class ImageUtil {
 			return null;
 		}
 	}
-	/**
+	*//**
 	 * 压缩图片
 	 * 
 	 * @param image
 	 * @param dest
 	 * @throws IOException
-	 */
+	 *//*
 	public static void write(BufferedImage image, OutputStream dest, float quality) throws IOException {
 		JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(dest);
 		JPEGEncodeParam param = JPEGCodec.getDefaultJPEGEncodeParam(image);
@@ -190,29 +190,29 @@ public class ImageUtil {
 		return returndir;
 	}
 
-	/** 
+	*//** 
 	 *
 	 * @Title:  getDirName 
 	 * @Description: 获取当天的文件夹格式 如日期为 2018-04-24  则返回 20180424
 	 * @return String     
 	 * @throws 
 	 *
-	 */
+	 *//*
 	public static String getDirName() {
 		return simpleDateFormat.format(new Date());
 	}
-	/** 
+	*//** 
 	 *
 	 * @Title:  getYesTerdayDirName 
 	 * @Description: 获取当天的文件夹格式 如日期为 2018-04-24  则返回 20180424
 	 * @return String     
 	 * @throws 
 	 *
-	 */
+	 *//*
 	public static String getYesTerdayDirName() {
 		return simpleDateFormat.format(DateUtil.addDay(new Date(), -1));
 	}
-	/** 
+	*//** 
 	 *
 	 * @Title:  getEveryDayDirName 
 	 * @Description: 获取当天的文件夹格式 如参数为 2018-04-24 12:05:00  则返回 20180424
@@ -220,7 +220,7 @@ public class ImageUtil {
 	 * @return String     
 	 * @throws 
 	 *
-	 */
+	 *//*
 	public static String getEveryDayDirName(String dateTime) {
 		return simpleDateFormat.format(DateUtil.parse(dateTime, DateUtil.DATE));
 	}
@@ -353,7 +353,7 @@ public class ImageUtil {
 				os.close();
 		}
 	}
-	/** 
+	*//** 
 	 *
 	 * @Title:  formatePcString 
 	 * @Description:	图文分离 
@@ -361,7 +361,7 @@ public class ImageUtil {
 	 * @return Map<String,String>     
 	 * @throws 
 	 *
-	 */
+	 *//*
 	public static Map<String, String> formatePcString(String str) {
 		Map<String, String> map = new HashMap<>();
 		map.put("mes", "");
@@ -383,9 +383,9 @@ public class ImageUtil {
 		return map;
 	}
 	
-	/**
+	*//**
 	 * @param args
-	 */
+	 *//*
 	public static void main(String[] args) throws Exception {
 		BufferedImage imgMap = watermark(250, 100, new Font("隶书", Font.ITALIC, 30), Color.LIGHT_GRAY, "碧桂园");
 		File imgFile = new File("D://watermark.png");
@@ -403,3 +403,4 @@ public class ImageUtil {
 		// + i + "_225.jpg"), 225, 300);
 	}
 }
+*/

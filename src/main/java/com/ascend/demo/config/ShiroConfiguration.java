@@ -11,19 +11,24 @@ import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.authc.pam.AllSuccessfulStrategy;
 import org.apache.shiro.authc.pam.ModularRealmAuthenticator;
 import org.apache.shiro.cache.MemoryConstrainedCacheManager;
-import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.codec.Base64;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.realm.Realm;
+import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.CookieRememberMeManager;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.apache.shiro.web.servlet.Cookie;
 import org.apache.shiro.web.servlet.SimpleCookie;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
+import com.ascend.demo.common.redis.shiro.RedisCacheManager;
+import com.ascend.demo.common.redis.shiro.RedisSessionDAO;
+import com.ascend.demo.common.redis.shiro.STShiroConf;
+import com.ascend.demo.common.redis.shiro.ShiroSessionManager;
 import com.ascend.demo.security.shiro.ShiroAccessControlFilter;
 import com.ascend.demo.security.shiro.ShiroRealm;
 
@@ -111,6 +116,7 @@ public class ShiroConfiguration {
         securityManager.setCacheManager(new MemoryConstrainedCacheManager());
         //设置rememberMe 
         securityManager.setRememberMeManager(rememberMeManager());
+        securityManager.setSessionManager(sessionManager());
         return securityManager;
     }
 
@@ -170,13 +176,50 @@ public class ShiroConfiguration {
     /**
      * 自定义cache策略的实现，只需要将EhCacheManager的配置文件定位到自己写的配置文件就可以了
      * @return
-     */
+     *//*
     @Bean
     public EhCacheManager ehCacheManager(){
     	
     	EhCacheManager  ehCacheManager =new EhCacheManager();
     	ehCacheManager.setCacheManagerConfigFile("classpath:config/ehcache-shiro.xml");
     	return ehCacheManager;
+    }*/
+    
+    @Bean
+    public RedisCacheManager redisCacheManager() {
+        return new RedisCacheManager();
+    }
+    
+    @Bean
+    public RedisSessionDAO redisSessionDAO(){
+    	return new RedisSessionDAO();
+    }
+
+    @Bean
+    public SessionManager sessionManager() {
+    	ShiroSessionManager sessionManager = new ShiroSessionManager();
+        sessionManager.setSessionDAO(redisSessionDAO());
+        sessionManager.setGlobalSessionTimeout(getSTShiroConf().getSessionTimeout());
+        sessionManager.setCacheManager(redisCacheManager());
+        sessionManager.setDeleteInvalidSessions(true);//删除过期的session
+        sessionManager.setSessionIdCookieEnabled(true);
+		sessionManager.setSessionIdCookie(sessionIdCookie());
+        return sessionManager;
+    }
+    
+    //设置cookie
+    @Bean
+    public Cookie sessionIdCookie(){
+    	Cookie sessionIdCookie=new SimpleCookie("STID");
+    	sessionIdCookie.setMaxAge(-1);
+    	sessionIdCookie.setHttpOnly(true);
+    	return sessionIdCookie;
+    }
+   
+    @Bean("sTShiroConf")
+    @Primary
+    public STShiroConf getSTShiroConf(){
+    	return new STShiroConf();
     }
     
     //加入注解的使用，不加入这个注解不生效

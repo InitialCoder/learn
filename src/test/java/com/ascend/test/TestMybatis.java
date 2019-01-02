@@ -1,4 +1,4 @@
-package com.ascend.test;
+/*package com.ascend.test;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -42,7 +42,7 @@ public class TestMybatis {
 	@Test
 	public void test(){
 		
-/*		List<SystemUserDO> list=service.findAll(); 
+		List<SystemUserDO> list=service.findAll(); 
 		int i=1;
 		for (SystemUserDO pojo : list) {
 			pojo.setAge(16+i);
@@ -56,7 +56,7 @@ public class TestMybatis {
 			i++;
 		}
 		
-		service.update(list);*/
+		service.update(list);
 		
 //		SystemUserDTO dto=new SystemUserDTO();
 //		dto.setAge(17);
@@ -73,3 +73,4 @@ public class TestMybatis {
 		System.out.println("-----------=====================");
 	}
 }
+*/
