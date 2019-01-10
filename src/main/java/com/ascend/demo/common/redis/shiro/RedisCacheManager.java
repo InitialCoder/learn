@@ -7,7 +7,7 @@ import org.apache.shiro.cache.CacheException;
 import org.apache.shiro.cache.CacheManager;
 import org.springframework.data.redis.core.RedisTemplate;
 
-public class RedisCacheManager implements CacheManager {
+public class RedisCacheManager implements CacheManager{
 	
 	private long globExpire=1800;
 	

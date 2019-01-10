@@ -70,7 +70,7 @@ public class ShiroConfiguration {
      * rememberMeCookie()方法是设置Cookie的生成模版，比如cookie的name，cookie的有效时间等等。  
      * @return  
     */  
-   @Bean  
+   @Bean
    public SimpleCookie rememberMeCookie(){  
          //System.out.println("ShiroConfiguration.rememberMeCookie()");  
          //这个参数是cookie的名称，对应前端的checkbox的name = rememberMe  
@@ -112,10 +112,11 @@ public class ShiroConfiguration {
 //    	realms.add(realm2());
         realms.add(shiroRealm());
         securityManager.setRealms(realms);
-        //使用shiro自带缓存
+        //使用shiro自带缓存管理、可以切换至ehcachemanager
         securityManager.setCacheManager(new MemoryConstrainedCacheManager());
-        //设置rememberMe 
+        //设置 cookie rememberMe 
         securityManager.setRememberMeManager(rememberMeManager());
+        //配置session管理
         securityManager.setSessionManager(sessionManager());
         return securityManager;
     }

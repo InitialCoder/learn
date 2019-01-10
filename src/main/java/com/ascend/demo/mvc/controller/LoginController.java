@@ -28,7 +28,7 @@ public class LoginController {
 	public String shiroLogin(@RequestParam String userAccount, @RequestParam String password){
 		
 		/**
-		 * 获取当前用户
+		 * 获取当前线程subject
 		 */
 		Subject currentUser=SecurityUtils.getSubject();
 			

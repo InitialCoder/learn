@@ -14,8 +14,10 @@
 </head>
 <body>
 
-<div>测试富文本过滤XSS  因为没配置文件服务器，暂时不支持文件上传</div>
-<form action="#" onsubmit="return false" >
+
+<div> 欢迎光临！！</div>
+<div style="display:none;">测试富文本过滤XSS  因为没配置文件服务器，暂时不支持文件上传</div>
+<form action="#" onsubmit="return false" style="display:none;">
 	<div>
 		<input name="name" type="text">
 	</div>

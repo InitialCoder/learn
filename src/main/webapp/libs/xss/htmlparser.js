@@ -154,7 +154,7 @@
 
 					var text = index < 0 ? html : html.substring(0, index);
 					html = index < 0 ? "" : html.substring(index);
-
+  
 					if (handler.chars)
 						handler.chars(text);
 				}
@@ -172,10 +172,16 @@
 			}
 
 			if (html == last){
-				html=getContenOnly(html);
-//				throw "Parse Error: " + html;
+				//html=getContenOnly(html);//上个版本处理异常方式：只获取文本内容
+				//throw "Parse Error: " + html;  //源码处理异常：直接抛出
+				//当前异常处理方式
+					var text = html.substring(0, 1);
+					html = html.substring(1);
+  
+					if (handler.chars){
+						handler.chars(text);
+					}
 			}
-			
 			last = html;
 		}
 		

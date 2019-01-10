@@ -15,6 +15,8 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ascend.demo.common.domain.UserDO;
@@ -33,8 +35,14 @@ public class ShiroRealm extends AuthorizingRealm{
 	@Autowired
 	private RoleService roleService;
 	
+	Logger logger=LoggerFactory.getLogger(this.getClass());
+	
+	/**
+	 * 获取授权信息
+	 */
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+		logger.info("shirorealm     -----------doGetAuthorizationInfo----- 获取授权信息");
 		//1.从principals 中获取登录用户的信息
 		//2.利用登录的信息来获取用户权限信息（获取从数据库获取用户的角色和权限信息并且设置用户的权限或角色）
 		//3.c创建AuthorizationInfo 的子类SimpleAuthorizationInfo
@@ -49,9 +57,12 @@ public class ShiroRealm extends AuthorizingRealm{
 		return info;
 	}
 
+	/**
+	 * 获取身份认证信息
+	 */
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-		System.out.println("shirorealm     ----------------");
+		logger.info("shirorealm     -----------doGetAuthenticationInfo----- 身份认证信息");
 		//1 AuthenticationToken 转为userNamePasswordToken
 		//2 从usernamePasswordToken 中获取username;
 		//查询数据库
@@ -63,6 +74,7 @@ public class ShiroRealm extends AuthorizingRealm{
 		if(user==null){
 			throw new  UnknownAccountException("用户不存在！");
 		}
+		
 		//参数说明： principal 认证的实体信息 可以是userAccount 也可以是数据表中对应的实体对象。
 		//		credential:密码
 		// 	readmName=父类的 getName();
