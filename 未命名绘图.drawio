@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-03-31T12:01:06.538Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" etag="Fy7dCyaHVDj91GO6FYJE" version="13.6.9" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2021-03-31T13:36:08.224Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" etag="naxNVD2FZkftLZlgex6m" version="13.6.9" type="github" pages="3">
   <diagram id="R2lEEEUBdFMjLlhIrx00" name="Page-1">
     <mxGraphModel dx="1662" dy="828" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
       <root>
@@ -235,7 +235,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="3JucS95Ga-_Bado79ybx" name="第 2 页">
-    <mxGraphModel dx="2489" dy="828" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2489" dy="772" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="DS7BerPDZezU8h9V2kEW-0" />
         <mxCell id="DS7BerPDZezU8h9V2kEW-1" parent="DS7BerPDZezU8h9V2kEW-0" />
@@ -688,6 +688,48 @@
         </mxCell>
         <mxCell id="lT-GF1k214w1c99qmLPB-4" value="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="DS7BerPDZezU8h9V2kEW-1">
           <mxGeometry x="817" y="1146.0008194824961" width="40" height="22.731202435312024" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="R4FeXYCI2jFE9F8KNvx2" name="第 3 页">
+    <mxGraphModel dx="1662" dy="772" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="XygYmN2iKQxNf-6kDB-1-0" />
+        <mxCell id="XygYmN2iKQxNf-6kDB-1-1" parent="XygYmN2iKQxNf-6kDB-1-0" />
+        <mxCell id="XygYmN2iKQxNf-6kDB-1-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="XygYmN2iKQxNf-6kDB-1-1" source="XygYmN2iKQxNf-6kDB-1-2" target="XygYmN2iKQxNf-6kDB-1-5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="180" y="160" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="XygYmN2iKQxNf-6kDB-1-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="XygYmN2iKQxNf-6kDB-1-1" source="XygYmN2iKQxNf-6kDB-1-2" target="XygYmN2iKQxNf-6kDB-1-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="XygYmN2iKQxNf-6kDB-1-2" value="科技人员" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="XygYmN2iKQxNf-6kDB-1-1">
+          <mxGeometry x="130" y="190" width="30" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="XygYmN2iKQxNf-6kDB-1-5" value="转换标准交易流水" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="XygYmN2iKQxNf-6kDB-1-1">
+          <mxGeometry x="274" y="110" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="XygYmN2iKQxNf-6kDB-1-6" value="配置金额类型的解析规则" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="XygYmN2iKQxNf-6kDB-1-1">
+          <mxGeometry x="274" y="240" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="XygYmN2iKQxNf-6kDB-1-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="XygYmN2iKQxNf-6kDB-1-1" source="XygYmN2iKQxNf-6kDB-1-14" target="XygYmN2iKQxNf-6kDB-1-15">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="180" y="400" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="XygYmN2iKQxNf-6kDB-1-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="XygYmN2iKQxNf-6kDB-1-1" source="XygYmN2iKQxNf-6kDB-1-14" target="XygYmN2iKQxNf-6kDB-1-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="XygYmN2iKQxNf-6kDB-1-14" value="计财同事" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="XygYmN2iKQxNf-6kDB-1-1">
+          <mxGeometry x="130" y="430" width="30" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="XygYmN2iKQxNf-6kDB-1-15" value="基础账套规则配置" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="XygYmN2iKQxNf-6kDB-1-1">
+          <mxGeometry x="274" y="350" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="XygYmN2iKQxNf-6kDB-1-16" value="产品记账规则配置" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="XygYmN2iKQxNf-6kDB-1-1">
+          <mxGeometry x="274" y="450" width="140" height="70" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
