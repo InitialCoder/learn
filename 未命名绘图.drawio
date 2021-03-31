@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-03-31T14:00:55.505Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" etag="eoS7KpcpTvZgRAoUnBAZ" version="13.6.9" type="github" pages="3">
+<mxfile host="app.diagrams.net" modified="2021-03-31T14:01:14.983Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" etag="Qg6my_njgQZiNkau-bg3" version="13.6.9" type="github" pages="3">
   <diagram id="R2lEEEUBdFMjLlhIrx00" name="Page-1">
     <mxGraphModel dx="1662" dy="828" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
       <root>
@@ -286,6 +286,9 @@
         </mxCell>
         <mxCell id="MPGPs2D8WvydJLBV8bWA-13" value="分录规则ID" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;" vertex="1" parent="iSXYjvYL0HkBKF_I5MWs-82">
           <mxGeometry x="30.576923076923094" y="180.00096491228072" width="234.4230769230769" height="44.21052631578947" as="geometry" />
+        </mxCell>
+        <mxCell id="Fiep-knaDDa3fWkjIrgh-11" value="金额类型" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;" vertex="1" parent="iSXYjvYL0HkBKF_I5MWs-82">
+          <mxGeometry x="32.839999999999975" y="220.00052631578944" width="229.90384615384613" height="30" as="geometry" />
         </mxCell>
         <mxCell id="iSXYjvYL0HkBKF_I5MWs-61" value="" style="group" vertex="1" connectable="0" parent="DS7BerPDZezU8h9V2kEW-1">
           <mxGeometry x="80" y="330" width="320" height="890" as="geometry" />
