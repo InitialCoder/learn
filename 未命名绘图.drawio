@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-03-31T13:57:41.177Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" etag="4rv0g_jFpYEWMC2wH27a" version="13.6.9" type="github" pages="3">
+<mxfile host="app.diagrams.net" modified="2021-03-31T14:00:26.723Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" etag="wIE4_mWp1N30eptGOhgK" version="13.6.9" type="github" pages="3">
   <diagram id="R2lEEEUBdFMjLlhIrx00" name="Page-1">
     <mxGraphModel dx="1662" dy="828" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
       <root>
@@ -269,7 +269,7 @@
         <mxCell id="iSXYjvYL0HkBKF_I5MWs-22" value="FK1" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;" vertex="1" parent="iSXYjvYL0HkBKF_I5MWs-21">
           <mxGeometry width="30" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="iSXYjvYL0HkBKF_I5MWs-23" value="金额取值公式" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;" vertex="1" parent="iSXYjvYL0HkBKF_I5MWs-21">
+        <mxCell id="iSXYjvYL0HkBKF_I5MWs-23" value="金额公式" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;" vertex="1" parent="iSXYjvYL0HkBKF_I5MWs-21">
           <mxGeometry x="30" width="229.90384615384613" height="30" as="geometry" />
         </mxCell>
         <mxCell id="iSXYjvYL0HkBKF_I5MWs-24" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1" parent="iSXYjvYL0HkBKF_I5MWs-17">
@@ -576,7 +576,7 @@
           <mxGeometry x="30" width="230" height="20" as="geometry" />
         </mxCell>
         <mxCell id="MPGPs2D8WvydJLBV8bWA-121" value="" style="group" vertex="1" connectable="0" parent="DS7BerPDZezU8h9V2kEW-1">
-          <mxGeometry x="-25" y="1747.1399999999999" width="260" height="140" as="geometry" />
+          <mxGeometry y="1747.1399999999999" width="260" height="140" as="geometry" />
         </mxCell>
         <mxCell id="MPGPs2D8WvydJLBV8bWA-122" value="业务交易编码" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;" vertex="1" parent="MPGPs2D8WvydJLBV8bWA-121">
           <mxGeometry x="30" y="70" width="230" height="20" as="geometry" />
@@ -636,7 +636,7 @@
           <mxGeometry x="30" width="230" height="20" as="geometry" />
         </mxCell>
         <mxCell id="MPGPs2D8WvydJLBV8bWA-144" value="" style="group" vertex="1" connectable="0" parent="DS7BerPDZezU8h9V2kEW-1">
-          <mxGeometry x="300" y="1747.14" width="260" height="140" as="geometry" />
+          <mxGeometry x="310" y="1747.14" width="260" height="140" as="geometry" />
         </mxCell>
         <mxCell id="MPGPs2D8WvydJLBV8bWA-56" value="" style="group" vertex="1" connectable="0" parent="MPGPs2D8WvydJLBV8bWA-144">
           <mxGeometry width="260" height="140" as="geometry" />
@@ -691,6 +691,36 @@
         </mxCell>
         <mxCell id="lT-GF1k214w1c99qmLPB-4" value="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="DS7BerPDZezU8h9V2kEW-1">
           <mxGeometry x="817" y="1146.0008194824961" width="40" height="22.731202435312024" as="geometry" />
+        </mxCell>
+        <mxCell id="Fiep-knaDDa3fWkjIrgh-1" value="" style="group" vertex="1" connectable="0" parent="DS7BerPDZezU8h9V2kEW-1">
+          <mxGeometry x="-300" y="1739.9999999999998" width="260" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="Fiep-knaDDa3fWkjIrgh-2" value="金额取值公式（解析交易流水的金额字段）" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;" vertex="1" parent="Fiep-knaDDa3fWkjIrgh-1">
+          <mxGeometry x="30" y="70" width="230" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Fiep-knaDDa3fWkjIrgh-3" value="交易系统" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;" vertex="1" parent="Fiep-knaDDa3fWkjIrgh-1">
+          <mxGeometry x="30" y="90" width="230" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Fiep-knaDDa3fWkjIrgh-4" value="业务系统金额档案" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;" vertex="1" parent="Fiep-knaDDa3fWkjIrgh-1">
+          <mxGeometry width="260" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="Fiep-knaDDa3fWkjIrgh-5" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" vertex="1" parent="Fiep-knaDDa3fWkjIrgh-4">
+          <mxGeometry y="30" width="260" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Fiep-knaDDa3fWkjIrgh-6" value="PK" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;" vertex="1" parent="Fiep-knaDDa3fWkjIrgh-5">
+          <mxGeometry width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Fiep-knaDDa3fWkjIrgh-7" value="ID" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;" vertex="1" parent="Fiep-knaDDa3fWkjIrgh-5">
+          <mxGeometry x="30" width="230" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Fiep-knaDDa3fWkjIrgh-8" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1" parent="Fiep-knaDDa3fWkjIrgh-4">
+          <mxGeometry y="50" width="260" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Fiep-knaDDa3fWkjIrgh-9" value="FK1" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;" vertex="1" parent="Fiep-knaDDa3fWkjIrgh-8">
+          <mxGeometry width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Fiep-knaDDa3fWkjIrgh-10" value="金额类型编码" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;" vertex="1" parent="Fiep-knaDDa3fWkjIrgh-8">
+          <mxGeometry x="30" width="230" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
