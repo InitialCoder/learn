@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-03-31T13:56:55.357Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" etag="GdCR5wl1KiyYLaA1JamG" version="13.6.9" type="github" pages="3">
+<mxfile host="app.diagrams.net" modified="2021-03-31T13:57:41.177Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" etag="4rv0g_jFpYEWMC2wH27a" version="13.6.9" type="github" pages="3">
   <diagram id="R2lEEEUBdFMjLlhIrx00" name="Page-1">
     <mxGraphModel dx="1662" dy="828" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
       <root>
@@ -468,10 +468,10 @@
           <mxGeometry x="29.53846153846154" y="90" width="226.46153846153848" height="25.71428571428571" as="geometry" />
         </mxCell>
         <mxCell id="MPGPs2D8WvydJLBV8bWA-28" value="科目编号" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;" vertex="1" parent="MPGPs2D8WvydJLBV8bWA-55">
-          <mxGeometry x="29.53846153846154" y="115.71428571428571" width="226.46153846153848" height="25.71428571428571" as="geometry" />
+          <mxGeometry x="29.53846153846154" y="135.71428571428572" width="226.46153846153848" height="25.71428571428571" as="geometry" />
         </mxCell>
         <mxCell id="MPGPs2D8WvydJLBV8bWA-30" value="科目名称" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;" vertex="1" parent="MPGPs2D8WvydJLBV8bWA-55">
-          <mxGeometry x="29.53846153846154" y="141.42857142857142" width="226.46153846153848" height="25.71428571428571" as="geometry" />
+          <mxGeometry x="29.53846153846154" y="164.2885714285714" width="226.46153846153848" height="25.71428571428571" as="geometry" />
         </mxCell>
         <mxCell id="MPGPs2D8WvydJLBV8bWA-19" value="核算产品-科目映射" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;" vertex="1" parent="MPGPs2D8WvydJLBV8bWA-55">
           <mxGeometry width="260" height="210" as="geometry" />
@@ -498,7 +498,10 @@
           <mxGeometry x="29.539999999999992" y="70" width="230" height="20" as="geometry" />
         </mxCell>
         <mxCell id="2iYCu-ugLhC22tjq5cB0-1" value="配平科目" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;" vertex="1" parent="MPGPs2D8WvydJLBV8bWA-55">
-          <mxGeometry x="30" y="167.13999999999987" width="230" height="20" as="geometry" />
+          <mxGeometry x="30" y="189.9999999999999" width="230" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Fiep-knaDDa3fWkjIrgh-0" value="金额类型编码" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;" vertex="1" parent="MPGPs2D8WvydJLBV8bWA-55">
+          <mxGeometry x="29.538461538461547" y="110.00428571428574" width="226.46153846153848" height="25.71428571428571" as="geometry" />
         </mxCell>
         <mxCell id="MPGPs2D8WvydJLBV8bWA-76" value="" style="group" vertex="1" connectable="0" parent="DS7BerPDZezU8h9V2kEW-1">
           <mxGeometry x="523" y="1340" width="260" height="140" as="geometry" />
